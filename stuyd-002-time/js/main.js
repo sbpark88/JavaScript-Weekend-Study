@@ -2,24 +2,41 @@ window.onload = () => {
   clockStart()
 }
 
+const main = document.getElementsByTagName('main')[0]
 const time = document.querySelectorAll('.screen span')
-const [ am, pm ] = document.querySelectorAll(('.screen em'));
+const [am, pm] = document.querySelectorAll(('.screen em'))
 
 let clock;
-const THOUSAND = 1000;
+const THOUSAND = 1000
 
 const getTime = () => {
   const now = new Date()
-  let hr = now.getHours()
-  const morning = hr < 12
-  hr = morning ? hr : hr - 12
+  const hr24 = now.getHours()
+  const morning = hr24 < 12
+  const hr12 = morning ? hr24 : hr24 - 12
   const min = now.getMinutes()
   const sec = now.getSeconds()
 
-  return { morning, hr, min, sec }
+  const themeCondition = [
+    {cond: (hr24 >= 5) && (hr24 < 11), name: 'morning'},
+    {cond: (hr24 >= 11) && (hr24 < 16), name: 'afternoon'},
+    {cond: (hr24 >= 16) && (hr24 < 19), name: 'evening'},
+    {cond: (hr24 >= 19) || (hr24 < 5), name: 'night'}
+  ]
+
+  return {morning, themeCondition, time: [hr12, min, sec]}
 }
 
-const setMorning = morning => {
+const setTheme = theme => {
+  theme.forEach(v => {
+    if (v.cond) {
+      main.className = ''
+      main.classList.add((v.name))
+    }
+  })
+}
+
+const setAmPm = morning => {
   if (morning) {
     am.classList.add('on')
     pm.classList.remove('on')
@@ -28,20 +45,17 @@ const setMorning = morning => {
     pm.classList.add('on')
   }
 }
-const setClock = (timeData) => {
-  time.forEach((v, i) => v.innerText = setPad(timeData[i]))
-}
+const setClock = (timeData) => time.forEach((v, i) => v.innerText = setPad(timeData[i]))
 
 const clockStart = () => {
   clock = setInterval(() => {
-    const { morning, hr, min, sec } = getTime()
-    setMorning(morning)
-    setClock([hr, min, sec])
+    const {morning, themeCondition: theme, time} = getTime()
+    setTheme(theme)
+    setAmPm(morning)
+    setClock(time)
   }, THOUSAND)
 }
-const clockStop = () => {
-  clearInterval(clock);
-}
+const clockStop = () => clearInterval(clock)
 
 const setPad = number => String(number).padStart(2, '0')
 // number < 10 && (number = '0' + number)

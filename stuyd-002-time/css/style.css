@@ -26,7 +26,30 @@ main {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+main.morning {
   background-image: url("../img/bg_morning.jpg");
+}
+main.morning figure {
+  background-image: url("../img/phone_morning.png");
+}
+main.afternoon {
+  background-image: url("../img/bg_afternoon.jpg");
+}
+main.afternoon figure {
+  background-image: url("../img/phone_afternoon.png");
+}
+main.evening {
+  background-image: url("../img/bg_evening.jpg");
+}
+main.evening figure {
+  background-image: url("../img/phone_evening.png");
+}
+main.night {
+  background-image: url("../img/bg_night.jpg");
+}
+main.night figure {
+  background-image: url("../img/phone_night.png");
 }
 main header {
   width: 90vw;
@@ -79,12 +102,10 @@ main figure {
   background-position: right top;
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url("../img/phone_morning.png");
 }
 main figure .screen {
   width: 532px;
   height: 299px;
-  border: 1px solid aqua;
   position: absolute;
   top: 100px;
   left: 133px;
