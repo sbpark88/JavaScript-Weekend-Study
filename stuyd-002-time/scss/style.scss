@@ -1,0 +1,111 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+@import "reset";
+
+main {
+  width: 100%;
+  height: 100vh;
+  min-width: 1400px;
+  min-height: 760px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../img/bg_morning.jpg");
+
+  header {
+    width: 90vw;
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      font: bold 30px/1 'orbitron';
+      color: #fff;
+    }
+
+    #gnb {
+      display: flex;
+      gap: 80px;
+
+      a {
+        font: bold 14px/1 'arial';
+        color: #fff;
+      }
+    }
+  }
+
+  article {
+    width: 40vw;
+    position: absolute;
+    top: 40vh;
+    left: 5vw;
+
+    p {
+      /*font-size: 4vw;
+      line-height: 1;*/
+      // 축약형
+      font: 4vw/1 'orbitron';
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    strong {
+      opacity: 0.7;
+    }
+
+    em {
+      font: bold 14px/1.2 'arial';
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+  }
+
+  figure {
+    width: 1200px;
+    height: 800px;
+    position: absolute;
+    right: -5vw;
+    bottom: -5vh;
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("../img/phone_morning.png");
+
+    .screen {
+      width: 532px;
+      height: 299px;
+      border: 1px solid aqua;
+      position: absolute;
+      top: 100px;
+      left: 133px;
+      font: 60px/299px 'orbitron';
+      color: #fff;
+      text-align: center;
+    }
+
+    em {
+      position: absolute;
+      top: 90px;
+      left: 80px;
+      font: 20px/1 'orbitron';
+      color: #fff;
+      opacity: 0;
+
+      &.on {
+        opacity: .8;
+      }
+    }
+
+    span {
+      display: inline-block;
+      width: 100px;
+    }
+  }
+}
