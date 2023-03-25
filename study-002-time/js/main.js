@@ -47,12 +47,15 @@ const setAmPm = morning => {
 }
 const setClock = (timeData) => time.forEach((v, i) => v.innerText = setPad(timeData[i]))
 
+const setClockTextColor = () => main.classList.contains('afternoon') ? main.classList.add('dark_text') : main.classList.remove('dark_text')
+
 const clockStart = () => {
   clock = setInterval(() => {
     const {morning, themeCondition: theme, time} = getTime()
     setTheme(theme)
     setAmPm(morning)
     setClock(time)
+    setClockTextColor()
   }, THOUSAND)
 }
 const clockStop = () => clearInterval(clock)

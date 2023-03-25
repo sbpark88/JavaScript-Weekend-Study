@@ -1,7 +1,7 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-@import "reset";
+@import 'reset';
 
 main {
   width: 100%;
@@ -15,35 +15,62 @@ main {
   background-position: center;
   background-size: cover;
 
+  .sky_cl1 {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    opacity: 0;
+    animation: cloud 40s linear 20s infinite;
+  }
+
+  .sky_cl2 {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    opacity: 0;
+    animation: cloud 40s linear 0s infinite;
+  }
+
+  &.dark_text {
+    header h1,
+    header #gnb a,
+    article p,
+    article em,
+    figure .screen,
+    figure .screen em {
+      color: #555;
+    }
+  }
+
   &.morning {
-    background-image: url("../img/bg_morning.jpg");
+    background-image: url('../img/bg_morning.jpg');
 
     figure {
-      background-image: url("../img/phone_morning.png");
+      background-image: url('../img/phone_morning.png');
     }
   }
 
   &.afternoon {
-    background-image: url("../img/bg_afternoon.jpg");
+    background-image: url('../img/bg_afternoon.jpg');
 
     figure {
-      background-image: url("../img/phone_afternoon.png");
+      background-image: url('../img/phone_afternoon.png');
     }
   }
 
   &.evening {
-    background-image: url("../img/bg_evening.jpg");
+    background-image: url('../img/bg_evening.jpg');
 
     figure {
-      background-image: url("../img/phone_evening.png");
+      background-image: url('../img/phone_evening.png');
     }
   }
 
   &.night {
-    background-image: url("../img/bg_night.jpg");
+    background-image: url('../img/bg_night.jpg');
 
     figure {
-      background-image: url("../img/phone_night.png");
+      background-image: url('../img/phone_night.png');
     }
   }
 
@@ -128,7 +155,7 @@ main {
       opacity: 0;
 
       &.on {
-        opacity: .8;
+        opacity: 0.8;
       }
     }
 
@@ -137,4 +164,22 @@ main {
       width: 100px;
     }
   }
+}
+
+@keyframes cloud {
+  0% {
+    opacity: 0;
+    left: -50%;
+  }
+  5% {
+    opacity: 0.5;
+  }
+  95% {
+    opacity: 0.5; /* 얘가 있어야 5 ~ 95% 구간의 opacity 가 0.5 로 유지가 된다 */
+  }
+  100% {
+    left: 80%;
+    opacity: 0;
+  }
+
 }
