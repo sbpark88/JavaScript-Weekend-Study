@@ -1,0 +1,68 @@
+@import 'reset';
+
+$slideNum: 5;
+
+#slider {
+  width: 400px;
+  height: 200px;
+  border: 10px solid #000;
+  margin: 100px auto;
+  position: relative;
+  //overflow: hidden;
+
+  .panel {
+    width: calc(100% * $slideNum);
+    height: 100%;
+
+    > div {
+      width: calc(100% / $slideNum);
+      height: 100%;
+      float: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      color: #ffffff;
+
+      &:nth-of-type(1) {
+        background: orange;
+      }
+
+      &:nth-of-type(2) {
+        background: aqua;
+      }
+
+      &:nth-of-type(3) {
+        background: darkviolet;
+      }
+
+      &:nth-of-type(4) {
+        background: lightgreen;
+      }
+
+      &:nth-of-type(5) {
+        background: violet;
+      }
+    }
+  }
+
+  .btn {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    gap: 20px;
+  }
+
+  li {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    transition: 0.5s;
+
+    &.on {
+      width: 70px;
+      background: #111;
+    }
+  }
+}
