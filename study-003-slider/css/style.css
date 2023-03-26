@@ -1,0 +1,114 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#slider {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+#slider .panel {
+  width: 500%;
+  height: 100%;
+}
+#slider .panel > div {
+  width: 20%;
+  height: 100%;
+  float: left;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-size: 50px;
+  color: #ffffff;
+  /* 1...5 */
+  /* 1...5 */
+  /* 1...5 */
+  /* 1...5 */
+  /* 1...5 */
+}
+#slider .panel > div:nth-of-type(1) {
+  background-image: url("../img/pic1.jpg");
+}
+#slider .panel > div:nth-of-type(2) {
+  background-image: url("../img/pic2.jpg");
+}
+#slider .panel > div:nth-of-type(3) {
+  background-image: url("../img/pic3.jpg");
+}
+#slider .panel > div:nth-of-type(4) {
+  background-image: url("../img/pic4.jpg");
+}
+#slider .panel > div:nth-of-type(5) {
+  background-image: url("../img/pic5.jpg");
+}
+#slider #ring {
+  position: absolute;
+  top: 50%;
+  margin-top: -160px; /* image size: 320x320 */
+  right: -160px;
+  transition: 1s;
+  /* 0..<5 */
+  /* 0..<5 */
+  /* 0..<5 */
+  /* 0..<5 */
+  /* 0..<5 */
+}
+#slider #ring.rot0 {
+  transform: rotate(0deg); /* 링에 원은 5개지만 한 칸이 비어있어서 실제로 6개 기준으로 6등분 되어있다. */
+}
+#slider #ring.rot1 {
+  transform: rotate(60deg); /* 링에 원은 5개지만 한 칸이 비어있어서 실제로 6개 기준으로 6등분 되어있다. */
+}
+#slider #ring.rot2 {
+  transform: rotate(120deg); /* 링에 원은 5개지만 한 칸이 비어있어서 실제로 6개 기준으로 6등분 되어있다. */
+}
+#slider #ring.rot3 {
+  transform: rotate(180deg); /* 링에 원은 5개지만 한 칸이 비어있어서 실제로 6개 기준으로 6등분 되어있다. */
+}
+#slider #ring.rot4 {
+  transform: rotate(240deg); /* 링에 원은 5개지만 한 칸이 비어있어서 실제로 6개 기준으로 6등분 되어있다. */
+}
+#slider .btn {
+  width: 90%;
+  height: 40px;
+  position: absolute;
+  bottom: 50px;
+  left: 5%;
+  display: flex;
+  justify-content: space-between;
+  perspective: 800px;
+  gap: 20px;
+}
+#slider li {
+  width: 18%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid #222;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+}
+#slider li.on {
+  background: #222;
+  color: #fff;
+  transform: rotateY(360deg);
+}
+
+/*# sourceMappingURL=style.css.map */
