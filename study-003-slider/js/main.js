@@ -1,6 +1,7 @@
 const panelWrapper = document.getElementsByClassName('panel')[0]
 const panels = [...panelWrapper.getElementsByTagName('div')]
-const panelWidth = parseInt(window.getComputedStyle(panels[0])['width'])
+
+const ring = document.getElementById('ring')
 
 const buttonWrapper = document.getElementsByClassName('btn')[0]
 const buttons = [...buttonWrapper.getElementsByTagName('li')]
@@ -15,18 +16,23 @@ buttonWrapper.addEventListener('click', (evt) => {
   if ((buttons.some(v => v === evt.target)) && (!evt.target.classList.contains('on'))) {
     const btnIndex = Number(evt.target.dataset.number)
     slidePanels(btnIndex)
+    rotateRing(btnIndex)
     setButtonToggle(btnIndex)
   }
 })
 
-const slidePanels = (index) => {
+const slidePanels = index => {
   new Anime(panelWrapper, {
     prop: 'margin-left',
     value: `${index * (-100)}`,
     duration: motionTime
   })
 }
-const setButtonToggle = (index) => {
+
+const rotateRing = index => {
+  ring.className = `rot${index}`
+}
+const setButtonToggle = index => {
   buttons.forEach((v, i) => {
     i === index
         ? (v.classList.add('on'))

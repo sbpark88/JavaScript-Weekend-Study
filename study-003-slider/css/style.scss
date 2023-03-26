@@ -1,6 +1,8 @@
 @import 'reset';
 
 $slideNum: 5;
+$btnHeight: 40px;
+$slideTransitionTime: 1s;
 
 #slider {
   width: 100vw;
@@ -24,7 +26,7 @@ $slideNum: 5;
       font-size: 50px;
       color: #ffffff;
 
-      @for $i from 1 through $slideNum {
+      @for $i from 1 through $slideNum { /* 1...5 */
         &:nth-of-type(#{$i}) {
           background-image: url("../img/pic#{$i}.jpg");
         }
@@ -32,7 +34,19 @@ $slideNum: 5;
     }
   }
 
-  $btnHeight: 40px;
+  #ring {
+    position: absolute;
+    top: 50%;
+    margin-top: -160px; /* image size: 320x320 */
+    right: -160px;
+    transition: $slideTransitionTime;
+
+    @for $i from 0 to $slideNum { /* 0..<5 */
+      &.rot#{$i} {
+        transform: rotate($i * 60deg); /* 링에 원은 5개지만 한 칸이 비어있어서 실제로 6개 기준으로 6등분 되어있다. */
+      }
+    }
+  }
 
   .btn {
 
@@ -56,7 +70,7 @@ $slideNum: 5;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 1s;
+    transition: $slideTransitionTime;
 
     &.on {
       background: #222;
