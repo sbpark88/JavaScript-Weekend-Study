@@ -9,7 +9,10 @@ const seconds = 0.5
 const modalDuration = seconds * THOUSAND
 
 
-btnModalOpen.addEventListener('click', (e) => {
+btnModalOpen.addEventListener('click', openModal)
+btnModalClose.addEventListener('click', closeModal)
+
+function openModal(e) {
   e.preventDefault();
   contentModal.style.display = 'block';
   main.classList.add('off')
@@ -47,9 +50,9 @@ btnModalOpen.addEventListener('click', (e) => {
       });
     },
   });
-})
+}
 
-btnModalClose.addEventListener('click', (e) => {
+function closeModal(e) {
   e.preventDefault();
   new Anime(_inner, {
     prop: 'opacity',
@@ -67,4 +70,4 @@ btnModalClose.addEventListener('click', (e) => {
           })
     }
   })
-})
+}
