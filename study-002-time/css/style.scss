@@ -3,6 +3,8 @@
 
 @import 'reset';
 
+$times: morning, afternoon, evening, night;
+
 main {
   width: 100%;
   height: 100vh;
@@ -42,35 +44,13 @@ main {
     }
   }
 
-  &.morning {
-    background-image: url('../img/bg_morning.jpg');
+  @each $time in $times {
+    &.#{$time} {
+      background-image: url('../img/bg_#{$time}.jpg');
 
-    figure {
-      background-image: url('../img/phone_morning.png');
-    }
-  }
-
-  &.afternoon {
-    background-image: url('../img/bg_afternoon.jpg');
-
-    figure {
-      background-image: url('../img/phone_afternoon.png');
-    }
-  }
-
-  &.evening {
-    background-image: url('../img/bg_evening.jpg');
-
-    figure {
-      background-image: url('../img/phone_evening.png');
-    }
-  }
-
-  &.night {
-    background-image: url('../img/bg_night.jpg');
-
-    figure {
-      background-image: url('../img/phone_night.png');
+      figure {
+        background-image: url('../img/phone_#{$time}.png');
+      }
     }
   }
 
