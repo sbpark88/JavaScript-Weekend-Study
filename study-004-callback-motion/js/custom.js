@@ -8,52 +8,24 @@ const THOUSAND = 1000
 const seconds = 0.5
 const modalDuration = seconds * THOUSAND
 
+window.addEventListener('load', () => {
+  btnModalOpen.addEventListener('click', openModal)
+  btnModalClose.addEventListener('click', closeModal)
+})
 
-btnModalOpen.addEventListener('click', openModal)
-btnModalClose.addEventListener('click', closeModal)
-
-function openModal(e) {
-  e.preventDefault();
+const openModal = async e => {
+  e.preventDefault()
   contentModal.style.display = 'block';
   main.classList.add('off')
 
-  new Anime(_top, {
-    prop: 'width',
-    value: '100%',
-    duration: modalDuration,
-    callback: () => {
-      new Anime(_right, {
-        prop: 'height',
-        value: '100%',
-        duration: modalDuration,
-        callback: () => {
-          new Anime(_bottom, {
-            prop: 'width',
-            value: '100%',
-            duration: modalDuration,
-            callback: () => {
-              new Anime(_left, {
-                prop: 'height',
-                value: '100%',
-                duration: modalDuration,
-                callback: () => {
-                  new Anime(_inner, {
-                    prop: 'opacity',
-                    value: 1,
-                    duration: modalDuration,
-                  });
-                },
-              });
-            },
-          });
-        },
-      });
-    },
-  });
+  await drawModalTop()
+  await drawModalRight()
+  await drawModalBottom()
+  await drawModalLeft()
+  await drawModalInner()
 }
 
-function closeModal(e) {
-  e.preventDefault();
+const closeModal = e => {
   new Anime(_inner, {
     prop: 'opacity',
     value: 0,
@@ -69,5 +41,61 @@ function closeModal(e) {
             }
           })
     }
+  })
+}
+
+// MARK: Open Modal Functions
+const drawModalTop = () => {
+  return new Promise(resolve => {
+    new Anime(_top, {
+      prop: 'width',
+      value: '100%',
+      duration: modalDuration,
+      callback: () => resolve()
+    })
+  })
+}
+
+const drawModalRight = () => {
+  return new Promise(resolve => {
+    new Anime(_right, {
+      prop: 'height',
+      value: '100%',
+      duration: modalDuration,
+      callback: () => resolve()
+    })
+  })
+}
+
+const drawModalBottom = () => {
+  return new Promise(resolve => {
+    new Anime(_bottom, {
+      prop: 'width',
+      value: '100%',
+      duration: modalDuration,
+      callback: () => resolve()
+    })
+  })
+}
+
+const drawModalLeft = () => {
+  return new Promise(resolve => {
+    new Anime(_left, {
+      prop: 'height',
+      value: '100%',
+      duration: modalDuration,
+      callback: () => resolve()
+    })
+  })
+}
+
+const drawModalInner = () => {
+  return new Promise(resolve => {
+    new Anime(_inner, {
+      prop: 'opacity',
+      value: 1,
+      duration: modalDuration,
+      callback: () => resolve()
+    })
   })
 }
