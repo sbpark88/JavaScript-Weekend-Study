@@ -19,11 +19,12 @@ $slideNum: 5;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
+      background-attachment: fixed;
 
       font-size: 50px;
       color: #ffffff;
 
-      @for $i from 1 through 5 {
+      @for $i from 1 through $slideNum {
         &:nth-of-type(#{$i}) {
           background-image: url("../img/pic#{$i}.jpg");
         }
