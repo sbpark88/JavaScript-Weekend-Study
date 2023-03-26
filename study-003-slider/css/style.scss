@@ -32,23 +32,36 @@ $slideNum: 5;
     }
   }
 
+  $btnHeight: 40px;
+
   .btn {
+
+    width: 90%;
+    height: $btnHeight;
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 50px;
+    left: 5%;
     display: flex;
+    justify-content: space-between;
+    perspective: 800px;
     gap: 20px;
   }
 
   li {
-    width: 20px;
-    height: 20px;
-    background: #fff;
-    transition: 0.5s;
+    width: 18%;
+    height: 100%;
+    border-radius: $btnHeight / 2;
+    border: 1px solid #222;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
 
     &.on {
-      width: 70px;
-      background: #111;
+      background: #222;
+      color: #fff;
+      transform: rotateY(360deg);
     }
   }
 }
