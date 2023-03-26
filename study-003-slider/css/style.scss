@@ -3,10 +3,8 @@
 $slideNum: 5;
 
 #slider {
-  width: 400px;
-  height: 200px;
-  border: 10px solid #000;
-  margin: 100px auto;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   overflow: hidden;
 
@@ -18,9 +16,6 @@ $slideNum: 5;
       width: calc(100% / $slideNum);
       height: 100%;
       float: left;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       font-size: 50px;
       color: #ffffff;
 
