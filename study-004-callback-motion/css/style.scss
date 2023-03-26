@@ -199,3 +199,28 @@ footer {
     letter-spacing: 2px;
   }
 }
+
+@media screen and (max-width: 699px) {
+  main {
+    .txt {
+      width: 70vw;
+    }
+  }
+  footer {
+    padding: 20px 5vw;
+    ul {
+      margin-bottom: 10px;
+    }
+  }
+  aside {
+    width: 80vw;
+    .inner {
+      .pic {
+        display: none;
+      }
+      .content {
+        width: 100%;
+      }
+    }
+  }
+}
