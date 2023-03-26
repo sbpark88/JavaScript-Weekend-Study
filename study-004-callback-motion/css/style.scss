@@ -79,7 +79,7 @@ aside {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -1;
+  display: none;
 
   .modal__line {
     background: #000;
@@ -122,6 +122,36 @@ aside {
     top: 0;
     left: 0;
     opacity: 0;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+
+    .pic {
+      width: 30%;
+    }
+
+    .content {
+      width: 65%;
+
+      h2 {
+        font: normal 5vw/1 'work sans';
+        color: #fff;
+        margin-bottom: 40px;
+      }
+
+      p {
+        font: 20px/1.5 'arial';
+        color: #666;
+      }
+    }
+
+    .btnClose {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+    }
   }
 }
 

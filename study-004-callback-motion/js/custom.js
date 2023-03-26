@@ -1,4 +1,5 @@
-const viewContentButton = document.getElementById('btnOpen')
+const btnModalOpen = document.getElementById('btnOpen')
+const btnModalClose = document.getElementById('btnClose')
 const contentModal = document.getElementById('contentModal')
 const [_top, _right, _bottom, _left, _inner] = contentModal.children
 
@@ -7,9 +8,9 @@ const seconds = 0.5
 const modalDuration = seconds * THOUSAND
 
 
-viewContentButton.addEventListener('click', (e) => {
+btnModalOpen.addEventListener('click', (e) => {
   e.preventDefault();
-  contentModal.style.zIndex = '1';
+  contentModal.style.display = 'block';
 
   new Anime(_top, {
     prop: 'width',
@@ -44,4 +45,19 @@ viewContentButton.addEventListener('click', (e) => {
       });
     },
   });
+})
+
+btnModalClose.addEventListener('click', (e) => {
+  e.preventDefault();
+  new Anime(_inner, {
+    prop: 'opacity',
+    value: 0,
+    duration: modalDuration / 2,
+    callback: () => {
+      new Anime(_top, { prop: 'width', value: '0%' }),
+      new Anime(_right, { prop: 'height', value: '0%' }),
+      new Anime(_bottom, { prop: 'width', value: '0%' }),
+      new Anime(_left, { prop: 'height', value: '0%', callback: () => contentModal.style.display = 'none' })
+    }
+  })
 })
