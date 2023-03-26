@@ -9,11 +9,13 @@ const buttons = [...buttonWrapper.getElementsByTagName('li')]
 const THOUSAND = 1000
 const seconds = 1
 const motionTime = THOUSAND * seconds
+let motionEnable = true
 
 buttonWrapper.addEventListener('click', (evt) => {
   // condition 1 : '<ul class="btn">'이 아닌 '<li class="btn-wrapper__btn-number"></li>'가 클릭된 게 맞는가?
   // condition 2 : 현재 활성 상태가 아닌가?(= on 이 아닌가?)
-  if ((buttons.some(v => v === evt.target)) && (!evt.target.classList.contains('on'))) {
+  if (motionEnable && (buttons.some(v => v === evt.target)) && (!evt.target.classList.contains('on'))) {
+    motionEnable = false
     const btnIndex = Number(evt.target.dataset.number)
     slidePanels(btnIndex)
     rotateRing(btnIndex)
@@ -25,7 +27,8 @@ const slidePanels = index => {
   new Anime(panelWrapper, {
     prop: 'margin-left',
     value: `${index * (-100)}`,
-    duration: motionTime
+    duration: motionTime,
+    callback: () => motionEnable = true
   })
 }
 
