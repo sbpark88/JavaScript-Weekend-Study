@@ -1,4 +1,5 @@
 class Anime {
+  /* transform, background color 같은 것을 제외하면 대부분 가능 */
   constructor(selector, option) {
     this.selector = selector;
     this.option = option;
