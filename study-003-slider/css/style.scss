@@ -64,7 +64,7 @@ $slideTransitionTime: 1s;
   li {
     width: 18%;
     height: 100%;
-    border-radius: $btnHeight / 2;
+    border-radius: calc($btnHeight / 2);
     border: 1px solid #222;
     cursor: pointer;
     display: flex;
