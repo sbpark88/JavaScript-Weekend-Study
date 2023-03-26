@@ -46,6 +46,7 @@ main {
     top: 50%;
     transform: translateY(-70%);
     left: 15vw;
+    transition: 1s;
   }
 
   .woman {
@@ -53,6 +54,7 @@ main {
     position: absolute;
     top: 0;
     left: 50%;
+    transition: 1s .2s;
   }
 
   .btnOpen {
@@ -69,6 +71,23 @@ main {
     font: bold 14px/1 'arial';
     color: #fff;
     letter-spacing: 1px;
+    transition: 1s .4s;
+  }
+}
+
+// 메인 콘텐츠 초기화
+main.off {
+  .txt {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+  .woman {
+    opacity: 0;
+    left: 100%;
+  }
+  .btnOpen {
+    opacity: 0;
+    bottom: 0;
   }
 }
 
