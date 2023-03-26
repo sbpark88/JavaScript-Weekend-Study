@@ -8,7 +8,7 @@ $slideNum: 5;
   border: 10px solid #000;
   margin: 100px auto;
   position: relative;
-  //overflow: hidden;
+  overflow: hidden;
 
   .panel {
     width: calc(100% * $slideNum);
