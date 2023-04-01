@@ -76,6 +76,18 @@ body section article {
   align-items: center;
   display: none;
 }
+body section article:nth-of-type(1) {
+  height: 400px;
+}
+body section article:nth-of-type(2) {
+  height: 350px;
+}
+body section article:nth-of-type(3) {
+  height: 450px;
+}
+body section article:nth-of-type(4) {
+  height: 300px;
+}
 body section article.on {
   display: flex;
 }
