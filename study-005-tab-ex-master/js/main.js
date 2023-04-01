@@ -3,11 +3,13 @@ const btnsWrapper = document.getElementById('wrapper__btns')
 const btns = document.querySelectorAll(' ul li')
 const boxs = main.querySelectorAll('section article')
 const speed = convertSpeed(boxs[0])
+let preventEvent = false
 
 btnsWrapper.addEventListener('click', (e) => {
   e.preventDefault()
   const index = Number(e.target.dataset.number) - 1;
-  if (btns[index].classList.contains('on')) return;   // 활성 타겟 재클릭 동작 방지
+  if (preventEvent || btns[index].classList.contains('on')) return;   // 활성 타겟 재클릭 동작 방지
+  preventEvent = true;
   [btns, boxs].forEach(arr => activation(arr, index)) // 비활성 타겟 클릭시 동작
   changeHeight(index)
 })
@@ -26,7 +28,8 @@ const changeHeight = index => {
   new Anime(main, {
     prop: 'height',
     value: parseInt(`${getComputedStyle(boxs[index])?.height}`),
-    duration: speed
+    duration: speed,
+    callback: () => preventEvent = false
   })
 }
 
