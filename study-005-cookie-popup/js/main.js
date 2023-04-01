@@ -47,7 +47,7 @@ const defineCookie = ({key, value, expires}) => {
 
 const createCookie = ({key, value}) => {
   const expires = setCookieExpires(1)
-  defineCookie({key: 'today', value: 'done', expires: expires})
+  defineCookie({key: key, value: value, expires: expires})
 }
 
 const deleteCookie = ({key, value}) => {
