@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#grow {
+  background-color: aqua;
+  width: 200px;
+  height: 200px;
+}
+
+#moving {
+  background-color: cornflowerblue;
+  width: 10vw;
+  height: 10vw;
+}
+
+section {
+  display: flex;
+  margin: 30px;
+}
+section .section__btn {
+  background-color: coral;
+  width: 200px;
+  height: 60px;
+  margin: 40px 30px;
+}
+
+/*# sourceMappingURL=animePractice.css.map */

@@ -1,0 +1,221 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  outline: 0;
+  text-decoration: none;
+}
+
+img {
+  outline: 0;
+}
+
+header {
+  /*
+  height 는 일반적으로 100vh 를 많이 쓰지만 width 는 100% 를 많이 쓴다.
+  스크롤이 생길 경우 100% 는 실제 보여지는 크기를 기준으로 하지만 100vw 는 스크롤까지 포함하기 때문.
+  */
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  padding: 5vh 5vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+header .sns {
+  display: flex;
+  gap: 30px;
+}
+header .sns a {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #444;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #fff;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/bgBody.jpg") no-repeat center/cover;
+}
+main .txt {
+  width: 40vw;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-70%);
+  left: 15vw;
+  transition: 1s;
+}
+main .woman {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transition: 1s 0.2s;
+}
+main .btnOpen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+  min-width: 300px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 30vh;
+  left: 15vw;
+  font: bold 14px/1 "arial";
+  color: #fff;
+  letter-spacing: 1px;
+  transition: 1s 0.4s;
+}
+
+main.off .txt {
+  opacity: 0;
+  transform: translateY(-200%);
+}
+main.off .woman {
+  opacity: 0;
+  left: 100%;
+}
+main.off .btnOpen {
+  opacity: 0;
+  bottom: 0;
+}
+
+aside {
+  width: 60vw;
+  height: 60vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+aside .modal__line {
+  background: #000;
+  position: absolute;
+}
+aside .horizontal {
+  width: 0;
+  height: 1px;
+}
+aside .vertical {
+  width: 1px;
+  height: 0;
+}
+aside .top {
+  top: 0;
+  left: 0;
+}
+aside .right {
+  top: 0;
+  right: 0;
+}
+aside .bottom {
+  bottom: 0;
+  right: 0;
+}
+aside .left {
+  bottom: 0;
+  left: 0;
+}
+aside .inner {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+aside .inner .pic {
+  width: 30%;
+}
+aside .inner .content {
+  width: 65%;
+}
+aside .inner .content h2 {
+  font: normal 5vw/1 "work sans";
+  color: #fff;
+  margin-bottom: 40px;
+}
+aside .inner .content p {
+  font: 20px/1.5 "arial";
+  color: #666;
+}
+aside .inner .btnClose {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 5vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+}
+footer ul {
+  display: flex;
+  gap: 30px;
+  font: bold 12px/1 "arial";
+  color: #aaa;
+}
+footer p {
+  font: 11px/1 "arial";
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+@media screen and (max-width: 699px) {
+  main .txt {
+    width: 70vw;
+  }
+  footer {
+    padding: 20px 5vw;
+  }
+  footer ul {
+    margin-bottom: 10px;
+  }
+  aside {
+    width: 80vw;
+  }
+  aside .inner .pic {
+    display: none;
+  }
+  aside .inner .content {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

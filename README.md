@@ -13,3 +13,5 @@ Sass: v1.59.3 compiled with dart2js 2.19.4
 
 1. [Image Sequence](https://sbpark88.github.io/JavaScript-Weekend-Study/study-001-image-sequence)
 2. [Clock in iPhone](https://sbpark88.github.io/JavaScript-Weekend-Study/study-002-time)
+3. [Slider](https://sbpark88.github.io/JavaScript-Weekend-Study/study-003-slider)
+4. [Callback Motion](https://sbpark88.github.io/JavaScript-Weekend-Study/study-004-callback-motion)
