@@ -2,7 +2,7 @@ const main = document.getElementsByTagName('main')[0]
 const btnsWrapper = document.getElementById('wrapper__btns')
 const btns = document.querySelectorAll(' ul li')
 const boxs = main.querySelectorAll('section article')
-
+const speed = convertSpeed(boxs[0])
 
 btnsWrapper.addEventListener('click', (e) => {
   e.preventDefault()
@@ -26,6 +26,10 @@ const changeHeight = index => {
   new Anime(main, {
     prop: 'height',
     value: parseInt(`${getComputedStyle(boxs[index])?.height}`),
-    duration: 500
+    duration: speed
   })
+}
+
+function convertSpeed(el) {
+  return parseFloat(getComputedStyle(el).transitionDuration) * 100
 }
