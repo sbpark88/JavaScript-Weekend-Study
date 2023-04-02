@@ -6,16 +6,14 @@
   border: 5px solid #000;
   margin: 100px auto;
   position: relative;
+  overflow: hidden;
 
   ul {
-    width: calc(100% * 4);
     height: 100%;
     position: absolute;
     top: 0;
-    left: -100%;
 
     li {
-      width: calc(100% / 4);
       height: 100%;
       float: left;
       display: flex;
