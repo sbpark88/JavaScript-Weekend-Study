@@ -53,30 +53,40 @@
   }
 }
 
-#slider2 {
-  width: 300px;
-  height: 600px;
+.phone {
+  width: 490px;
+  height: 787px;
+  background: url("../img/bgPhone.png") no-repeat 0 0;
   position: absolute;
-  overflow: hidden;
+
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #000;
 
-  ul {
-    height: 100%;
+
+  #slider2 {
+    width: 251px;
+    height: 445px;
     position: absolute;
-    top: 0;
-    left: 0%;
+    overflow: hidden;
+    top: 173px;
+    left: 98px;
 
-    li {
+    ul {
       height: 100%;
-      float: left;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 40px;
-      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      li {
+        height: 100%;
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        color: #fff;
+      }
     }
   }
 }

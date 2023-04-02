@@ -62,23 +62,30 @@ a {
   margin-top: -50px;
 }
 
-#slider2 {
-  width: 300px;
-  height: 600px;
+.phone {
+  width: 490px;
+  height: 787px;
+  background: url("../img/bgPhone.png") no-repeat 0 0;
   position: absolute;
-  overflow: hidden;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid #000;
 }
-#slider2 ul {
+.phone #slider2 {
+  width: 251px;
+  height: 445px;
+  position: absolute;
+  overflow: hidden;
+  top: 173px;
+  left: 98px;
+}
+.phone #slider2 ul {
   height: 100%;
   position: absolute;
   top: 0;
-  left: 0%;
+  left: 0;
 }
-#slider2 ul li {
+.phone #slider2 ul li {
   height: 100%;
   float: left;
   display: flex;
