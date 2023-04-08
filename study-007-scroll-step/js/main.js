@@ -13,10 +13,22 @@ btnContainer.addEventListener('click', evt => {
     btns.forEach((v, i) => {
       if (btns[i] === evt.target) {
         window.scrollTo({left: 0, top: secs[i].offsetTop, behavior: 'smooth'});
-        btns[i].classList.add('on')
-      } else {
-        btns[i].classList.remove('on')
       }
     })
   }
+})
+
+window.addEventListener('scroll', () => {
+  const scroll = window.scrollY
+  secs.forEach((sec, i) => {
+    if (scroll >= sec.offsetTop) {
+      for (const el of btns) el.classList.remove('on')
+      btns[i].classList.add('on')
+
+      for (const el of secs) el.classList.remove('on')
+      secs[i].classList.add('on')
+    }
+  })
+
+
 })
