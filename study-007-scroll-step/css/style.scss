@@ -5,20 +5,12 @@ section {
   height: 1400px;
   position: relative;
 
-  &:nth-of-type(1) {
-    background: pink;
-  }
+  $backgrounds: pink, lightblue, orange, lightgreen;
 
-  &:nth-of-type(2) {
-    background: lightblue;
-  }
-
-  &:nth-of-type(3) {
-    background: orange;
-  }
-
-  &:nth-of-type(4) {
-    background: lightgreen;
+  @for $i from 1 through length($backgrounds) {
+    &:nth-of-type(#{$i}) {
+      background: nth($backgrounds, $i);
+    }
   }
 }
 
