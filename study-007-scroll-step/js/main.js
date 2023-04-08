@@ -7,18 +7,30 @@
 const secs = [...document.getElementsByTagName('section')]
 const btnContainer = document.getElementById('btn-wrapper')
 const btns = [...btnContainer.children]
+const speed = 500
 
-btnContainer.addEventListener('click', evt => {
+window.onload = () => {
+  btnContainer.addEventListener('click', moveScroll)
+  window.addEventListener('scroll', activation)
+}
+
+// MARK: Scroll to specific y position
+const moveScroll = evt => {
   if (evt.target.tagName === 'LI') {
     btns.forEach((v, i) => {
       if (btns[i] === evt.target) {
-        window.scrollTo({left: 0, top: secs[i].offsetTop, behavior: 'smooth'});
+        new Anime(window, {
+          prop: 'scroll',
+          value: secs[i].offsetTop,
+          duration: speed
+        })
       }
     })
   }
-})
+}
 
-window.addEventListener('scroll', () => {
+// MARK: Activate bullets and screens
+const activation = () => {
   const scroll = window.scrollY
   const base = window.innerHeight / 2
 
@@ -31,4 +43,4 @@ window.addEventListener('scroll', () => {
       secs[i].classList.add('on')
     }
   })
-})
+}
