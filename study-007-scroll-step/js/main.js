@@ -20,8 +20,10 @@ btnContainer.addEventListener('click', evt => {
 
 window.addEventListener('scroll', () => {
   const scroll = window.scrollY
+  const base = window.innerHeight / 2
+
   secs.forEach((sec, i) => {
-    if (scroll >= sec.offsetTop) {
+    if (scroll >= sec.offsetTop - base) {
       for (const el of btns) el.classList.remove('on')
       btns[i].classList.add('on')
 

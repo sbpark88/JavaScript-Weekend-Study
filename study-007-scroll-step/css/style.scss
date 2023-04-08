@@ -27,7 +27,15 @@ section {
       transform: rotateY(270deg) translateY(100%);
       opacity: 0;
       transition: .5s;
+      transition-duration: .5s;
+
+      @for $i from 0 to 4 {
+        &:nth-of-type(#{$i + 1}) {
+          transition-delay: .1s * $i;
+        }
+      }
     }
+
     &.on {
       article {
         opacity: 1;
