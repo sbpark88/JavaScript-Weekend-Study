@@ -7,26 +7,37 @@
 const secs = [...document.getElementsByTagName('section')]
 const btnContainer = document.getElementById('btn-wrapper')
 const btns = [...btnContainer.children]
-const speed = 3500
+const speed = 500
+const enableStepScroll = false
 let enableScrollEvent = true
 
+
 window.onload = () => {
-  btnContainer.addEventListener('click', moveScroll)
+  btnContainer.addEventListener('click', clickMoveScroll(checkBullets)(moveScroll))
   window.addEventListener('scroll', activation)
+  window.addEventListener('resize', holdCurrentYAxis)
+  if (enableStepScroll) window.addEventListener('wheel', stepScroll)
 }
 
 // MARK: Scroll to specific y position
-const moveScroll = evt => {
-  if (evt.target.tagName === 'LI') {
+const moveScroll = index => {
+  if (secs[index]) {
+    enableScrollEvent = false
+    new Anime(window, {
+      prop: 'scroll',
+      value: secs[index].offsetTop,
+      duration: speed,
+      callback: () => enableScrollEvent = true
+    })
+  }
+}
+const checkBullets = evt => evt.target.tagName === 'LI'
+
+const clickMoveScroll = checker => action => evt => {
+  if (checker) {
     btns.forEach((v, i) => {
       if (enableScrollEvent && btns[i] === evt.target) {
-        enableScrollEvent = false
-        new Anime(window, {
-          prop: 'scroll',
-          value: secs[i].offsetTop,
-          duration: speed,
-          callback: () => enableScrollEvent = true
-        })
+        action(i)
       }
     })
   }
@@ -48,3 +59,27 @@ const activation = () => {
   })
 }
 
+// MARK: Set current y-axis when the browser is resized
+const holdCurrentYAxis = () => {
+  const {index: i} = currentButton()
+  window.scroll(0, secs[i].offsetTop)
+}
+
+// MARK: Step scroll when the mouse wheel is triggered
+const stepScroll = evt => {
+  const {index: i} = currentButton()
+  if (evt.deltaY > 0) { // move down => negative, move up => positive
+    console.log('wheel down index: ', i + 1)
+    moveScroll(i + 1)
+  } else if (evt.deltaY < 0) {
+    console.log('wheel up index: ', i - 1)
+    moveScroll(i - 1)
+  }
+}
+
+const currentButton = () => {
+  for (const [i, v] of btns.entries()) {
+    if (v.classList.contains('on'))
+      return {index: i, button: v}
+  }
+}

@@ -18,3 +18,4 @@ Sass: v1.59.3 compiled with dart2js 2.19.4
 5. [Cookie Test](https://sbpark88.github.io/JavaScript-Weekend-Study/study-005-cookie-popup/)
 6. [Tab Change](https://sbpark88.github.io/JavaScript-Weekend-Study/study-005-tab-ex-master/)
 7. [Slider Loop](https://sbpark88.github.io/JavaScript-Weekend-Study/study-006-slider-loop/)
+8. [Scroll Step](https://sbpark88.github.io/JavaScript-Weekend-Study/study-007-scroll-step/)
