@@ -7,7 +7,8 @@
 const secs = [...document.getElementsByTagName('section')]
 const btnContainer = document.getElementById('btn-wrapper')
 const btns = [...btnContainer.children]
-const speed = 500
+const speed = 3500
+let enableScrollEvent = true
 
 window.onload = () => {
   btnContainer.addEventListener('click', moveScroll)
@@ -18,11 +19,13 @@ window.onload = () => {
 const moveScroll = evt => {
   if (evt.target.tagName === 'LI') {
     btns.forEach((v, i) => {
-      if (btns[i] === evt.target) {
+      if (enableScrollEvent && btns[i] === evt.target) {
+        enableScrollEvent = false
         new Anime(window, {
           prop: 'scroll',
           value: secs[i].offsetTop,
-          duration: speed
+          duration: speed,
+          callback: () => enableScrollEvent = true
         })
       }
     })
@@ -44,3 +47,4 @@ const activation = () => {
     }
   })
 }
+
