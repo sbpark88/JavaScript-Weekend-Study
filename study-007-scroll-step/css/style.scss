@@ -12,6 +12,29 @@ section {
       background: nth($backgrounds, $i);
     }
   }
+
+  &:nth-of-type(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    perspective: 600px;
+
+    article {
+      width: 200px;
+      height: 200px;
+      background: #333;
+      transform: rotateY(270deg) translateY(100%);
+      opacity: 0;
+      transition: .5s;
+    }
+    &.on {
+      article {
+        opacity: 1;
+        transform: rotateY(0deg) translateY(0%);
+      }
+    }
+  }
 }
 
 ul {

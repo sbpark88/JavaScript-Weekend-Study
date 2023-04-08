@@ -29,6 +29,4 @@ window.addEventListener('scroll', () => {
       secs[i].classList.add('on')
     }
   })
-
-
 })

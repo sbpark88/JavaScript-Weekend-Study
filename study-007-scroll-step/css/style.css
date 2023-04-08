@@ -31,6 +31,25 @@ section:nth-of-type(3) {
 section:nth-of-type(4) {
   background: lightgreen;
 }
+section:nth-of-type(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  perspective: 600px;
+}
+section:nth-of-type(2) article {
+  width: 200px;
+  height: 200px;
+  background: #333;
+  transform: rotateY(270deg) translateY(100%);
+  opacity: 0;
+  transition: 0.5s;
+}
+section:nth-of-type(2).on article {
+  opacity: 1;
+  transform: rotateY(0deg) translateY(0%);
+}
 
 ul {
   position: fixed;
