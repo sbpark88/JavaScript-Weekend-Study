@@ -81,17 +81,18 @@ const activation = () => {
 
 const iconTransform = () => {
   const {scroll, base} = getYaxisPosition()
-
-  if (scroll >= secs[2].offsetTop) {
-    console.log('stop!!!')
-    icon.style.strokeDashoffset = '0'
-  } else if (scroll >= secs[2].offsetTop - base) {
-    // const divider = base
-    const divider = window.innerHeight
-    const frame = iconDasharrayLength / divider
-    icon.style.strokeDashoffset = `${frame * (scroll - secs[2].offsetTop)}`
-    console.log('working!!!')
-
+  const iconDrawStartingPoint = secs[2].offsetTop - base / 2
+  if (scroll < secs[2].offsetTop - base / 2) {
+    icon.style.strokeDashoffset = `${-iconDasharrayLength}`
+  } else if (scroll >= iconDrawStartingPoint) {
+    const strokeStartPoint = -iconDasharrayLength // 전체 길이만큼 - 에서 시작
+    const ratio = 6 // 화면 내에서 그리기 위해 그리는 속도 배율을 높인다.
+    const currentCycle = (scroll - iconDrawStartingPoint) * ratio // 사이클 1까지만 진행하고 이후 초과분은 그 상태로 멈추도록 함.
+    if (currentCycle >= iconDasharrayLength) {
+      icon.style.strokeDashoffset = '0'
+    } else {
+      icon.style.strokeDashoffset = `${strokeStartPoint + (scroll - iconDrawStartingPoint) * ratio}`
+    }
   }
 }
 
