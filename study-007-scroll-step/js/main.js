@@ -7,20 +7,30 @@
 const secs = [...document.getElementsByTagName('section')]
 const btnContainer = document.getElementById('btn-wrapper')
 const btns = [...btnContainer.children]
+const icon = document.querySelector('.svgBox path')
+const iconDasharrayLength = 2726
 const speed = 500
 const enableStepScroll = false
 let enableScrollEvent = true
-let eventThrottling = false
 
 window.onload = () => {
-  btnContainer.addEventListener('click', clickMoveScroll(checkBullets)(moveScroll))
-  throttleEvent('scroll')(activation)
-  throttleEvent('resize')(holdCurrentYAxis)
-  if (enableStepScroll) window.addEventListener('wheel', stepScroll)
+  const event = Object.freeze({
+    click: 'click',
+    scroll: 'scroll',
+    resize: 'resize',
+    wheel: 'wheel'
+  })
+
+  btnContainer.addEventListener(event.click, clickMoveScroll(checkBullets)(moveScroll))
+  throttleEvent(event.scroll)(activation)
+  throttleEvent(event.scroll)(iconTransform)
+  throttleEvent(event.resize)(holdCurrentYAxis)
+  if (enableStepScroll) window.addEventListener(event.wheel, stepScroll)
 }
 
 // MARK: Throttling
 const throttleEvent = evt => func => {
+  let eventThrottling = false
   window.addEventListener(evt, () => {
     if (eventThrottling) return
     eventThrottling = setTimeout(() => {
@@ -68,6 +78,10 @@ const activation = () => {
       secs[i].classList.add('on')
     }
   })
+}
+
+const iconTransform = () => {
+  console.log('icon transform is called')
 }
 
 // MARK: Set current y-axis when the browser is resized
