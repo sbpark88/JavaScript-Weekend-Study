@@ -66,8 +66,7 @@ const clickMoveScroll = checker => action => evt => {
 
 // MARK: Activate bullets and screens
 const activation = () => {
-  const scroll = window.scrollY
-  const base = window.innerHeight / 2
+  const {scroll, base} = getYaxisPosition()
 
   secs.forEach((sec, i) => {
     if (scroll >= sec.offsetTop - base) {
@@ -81,7 +80,25 @@ const activation = () => {
 }
 
 const iconTransform = () => {
-  console.log('icon transform is called')
+  const {scroll, base} = getYaxisPosition()
+
+  if (scroll >= secs[2].offsetTop) {
+    console.log('stop!!!')
+    icon.style.strokeDashoffset = '0'
+  } else if (scroll >= secs[2].offsetTop - base) {
+    // const divider = base
+    const divider = window.innerHeight
+    const frame = iconDasharrayLength / divider
+    icon.style.strokeDashoffset = `${frame * (scroll - secs[2].offsetTop)}`
+    console.log('working!!!')
+
+  }
+}
+
+const getYaxisPosition = () => {
+  const scroll = window.scrollY
+  const base = window.innerHeight / 2
+  return {scroll, base}
 }
 
 // MARK: Set current y-axis when the browser is resized

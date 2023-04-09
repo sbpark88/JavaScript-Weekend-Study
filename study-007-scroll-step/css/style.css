@@ -73,6 +73,13 @@ section:nth-of-type(3) .svgBox {
   height: 700px;
   display: flex;
   align-items: center;
+  /*&:hover {
+    path {
+      stroke-dashoffset: 0;
+      fill: rgba(0, 0, 0, .7);
+      transition: stroke-dashoffset 2s 0s, fill 2s 2s;
+    }
+  }*/
 }
 section:nth-of-type(3) .svgBox path {
   fill: rgba(0, 0, 0, 0);
@@ -80,12 +87,6 @@ section:nth-of-type(3) .svgBox path {
   stroke-width: 2;
   stroke-dasharray: 2726;
   stroke-dashoffset: -2726;
-  transition: stroke-dashoffset 1s 1s, fill 1s 0s;
-}
-section:nth-of-type(3) .svgBox:hover path {
-  stroke-dashoffset: 0;
-  fill: rgba(0, 0, 0, 0.7);
-  transition: stroke-dashoffset 2s 0s, fill 2s 2s;
 }
 
 ul {
