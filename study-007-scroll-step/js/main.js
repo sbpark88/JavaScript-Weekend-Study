@@ -23,7 +23,7 @@ window.onload = () => {
 
   btnContainer.addEventListener(event.click, clickMoveScroll(checkBullets)(moveScroll))
   throttleEvent(event.scroll)(activation)
-  throttleEvent(event.scroll)(iconTransform)
+  window.addEventListener(event.scroll, iconTransform)
   throttleEvent(event.resize)(holdCurrentYAxis)
   if (enableStepScroll) window.addEventListener(event.wheel, stepScroll)
 }
