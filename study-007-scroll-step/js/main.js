@@ -8,6 +8,7 @@ const secs = [...document.getElementsByTagName('section')]
 const btnContainer = document.getElementById('btn-wrapper')
 const btns = [...btnContainer.children]
 const icon = document.querySelector('.svgBox path')
+const box = document.querySelector('.box')
 const iconDasharrayLength = 2726
 const speed = 500
 const enableStepScroll = false
@@ -24,6 +25,7 @@ window.onload = () => {
   btnContainer.addEventListener(event.click, clickMoveScroll(checkBullets)(moveScroll))
   throttleEvent(event.scroll)(activation)
   window.addEventListener(event.scroll, iconTransform)
+  window.addEventListener(event.scroll, boxTransform)
   throttleEvent(event.resize)(holdCurrentYAxis)
   if (enableStepScroll) window.addEventListener(event.wheel, stepScroll)
 }
@@ -79,20 +81,35 @@ const activation = () => {
   })
 }
 
+// MARK: Section 3rd svg icon
 const iconTransform = () => {
   const {scroll, base} = getYaxisPosition()
-  const iconDrawStartingPoint = secs[2].offsetTop - base / 2
-  if (scroll < secs[2].offsetTop - base / 2) {
+  const transformStartPoint = secs[2].offsetTop - base / 2
+  if (scroll < transformStartPoint) {
     icon.style.strokeDashoffset = `${-iconDasharrayLength}`
-  } else if (scroll >= iconDrawStartingPoint) {
+  } else  {
     const strokeStartPoint = -iconDasharrayLength // 전체 길이만큼 - 에서 시작
     const ratio = 6 // 화면 내에서 그리기 위해 그리는 속도 배율을 높인다.
-    const currentCycle = (scroll - iconDrawStartingPoint) * ratio // 사이클 1까지만 진행하고 이후 초과분은 그 상태로 멈추도록 함.
+    const currentCycle = (scroll - transformStartPoint) * ratio // 사이클 1까지만 진행하고 이후 초과분은 그 상태로 멈추도록 함.
     if (currentCycle >= iconDasharrayLength) {
       icon.style.strokeDashoffset = '0'
     } else {
-      icon.style.strokeDashoffset = `${strokeStartPoint + (scroll - iconDrawStartingPoint) * ratio}`
+      icon.style.strokeDashoffset = `${strokeStartPoint + (scroll - transformStartPoint) * ratio}`
     }
+  }
+}
+
+// MARK: Section 4th transform box
+const boxTransform = () => {
+  const {scroll, base} = getYaxisPosition()
+  const transformStartPoint = secs[3].offsetTop - base / 2
+  if (scroll < transformStartPoint) {
+    box.style.background = 'lightgreen'
+  } else {
+    const diff = scroll - transformStartPoint
+    box.style.background = '#fff'
+    box.style.transform = `rotate(${diff / 5}deg) scale(${1 + diff / 700})`
+    box.style.opacity = `${1 - diff / 1000}`
   }
 }
 

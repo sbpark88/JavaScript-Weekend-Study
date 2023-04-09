@@ -5,7 +5,7 @@ section {
   height: 1400px;
   position: relative;
 
-  $backgrounds: pink, lightblue, orange, lightgreen;
+  $backgrounds: pink, lightblue, orange, lightgreen, cornflowerblue;
 
   @for $i from 1 through length($backgrounds) {
     &:nth-of-type(#{$i}) {
@@ -72,6 +72,17 @@ section {
           transition: stroke-dashoffset 2s 0s, fill 2s 2s;
         }
       }*/
+    }
+  }
+
+  &:nth-of-type(4) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .box {
+      width: 500px;
+      height: 500px;
     }
   }
 }

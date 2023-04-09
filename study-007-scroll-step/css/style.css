@@ -31,6 +31,9 @@ section:nth-of-type(3) {
 section:nth-of-type(4) {
   background: lightgreen;
 }
+section:nth-of-type(5) {
+  background: cornflowerblue;
+}
 section:nth-of-type(2) {
   display: flex;
   justify-content: center;
@@ -87,6 +90,15 @@ section:nth-of-type(3) .svgBox path {
   stroke-width: 2;
   stroke-dasharray: 2726;
   stroke-dashoffset: -2726;
+}
+section:nth-of-type(4) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section:nth-of-type(4) .box {
+  width: 500px;
+  height: 500px;
 }
 
 ul {
