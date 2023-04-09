@@ -10,13 +10,24 @@ const btns = [...btnContainer.children]
 const speed = 500
 const enableStepScroll = false
 let enableScrollEvent = true
-
+let eventThrottling = false
 
 window.onload = () => {
   btnContainer.addEventListener('click', clickMoveScroll(checkBullets)(moveScroll))
-  window.addEventListener('scroll', activation)
-  window.addEventListener('resize', holdCurrentYAxis)
+  throttleEvent('scroll')(activation)
+  throttleEvent('resize')(holdCurrentYAxis)
   if (enableStepScroll) window.addEventListener('wheel', stepScroll)
+}
+
+// MARK: Throttling
+const throttleEvent = evt => func => {
+  window.addEventListener(evt, () => {
+    if (eventThrottling) return
+    eventThrottling = setTimeout(() => {
+      func()
+      eventThrottling = false
+    }, 200)
+  })
 }
 
 // MARK: Scroll to specific y position
