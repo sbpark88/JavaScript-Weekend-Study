@@ -73,12 +73,19 @@ section:nth-of-type(3) .svgBox {
   height: 700px;
   display: flex;
   align-items: center;
-  border: 1px solid red;
 }
 section:nth-of-type(3) .svgBox path {
-  fill: rgba(0, 255, 25, 0.5);
+  fill: rgba(0, 0, 0, 0);
   stroke: #000;
-  stroke-width: 10;
+  stroke-width: 2;
+  stroke-dasharray: 2726;
+  stroke-dashoffset: -2726;
+  transition: stroke-dashoffset 1s 1s, fill 1s 0s;
+}
+section:nth-of-type(3) .svgBox:hover path {
+  stroke-dashoffset: 0;
+  fill: rgba(0, 0, 0, 0.7);
+  transition: stroke-dashoffset 2s 0s, fill 2s 2s;
 }
 
 ul {
