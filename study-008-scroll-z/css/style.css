@@ -14,4 +14,74 @@ a {
   text-decoration: none;
 }
 
+body {
+  height: 15000px;
+}
+
+section {
+  width: 1200px;
+  height: 700px;
+  border: 1px solid red;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -600px;
+  margin-top: -350px;
+  perspective: 2000px;
+}
+section article {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: blue;
+  font-size: 100px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.3;
+  z-index: 0;
+}
+section article.on {
+  opacity: 1;
+  z-index: 1;
+}
+section article a {
+  color: #fff;
+}
+section article:nth-of-type(1) {
+  transform: translateZ(0px);
+}
+section article:nth-of-type(2) {
+  transform: translateZ(-3000px);
+}
+section article:nth-of-type(3) {
+  transform: translateZ(-6000px);
+}
+section article:nth-of-type(4) {
+  transform: translateZ(-9000px);
+}
+section article:nth-of-type(5) {
+  transform: translateZ(-12000px);
+}
+
+.scrollNavi {
+  position: fixed;
+  top: 50%;
+  right: 5vw;
+  transform: translateY(-50%);
+}
+.scrollNavi li {
+  font-size: 20px;
+  cursor: pointer;
+  margin: 20px 0;
+  color: #888;
+}
+.scrollNavi li.on {
+  font-weight: bold;
+  color: #111;
+}
+
 /*# sourceMappingURL=style.css.map */
