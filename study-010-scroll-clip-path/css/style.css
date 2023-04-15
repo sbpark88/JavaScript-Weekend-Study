@@ -33,7 +33,7 @@ section.lower {
 }
 section.upper {
   background: linear-gradient(45deg, cornflowerblue, blueviolet);
-  clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
+  clip-path: circle(10% at 50% 50%);
   transition: 0.5s;
 }
 section.upper:hover {
@@ -41,7 +41,7 @@ section.upper:hover {
    삼각형 -> 삼각형
    사각형 -> 사각형
    */
-  clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 30% 100%);
+  clip-path: circle(70% at 70% 50%);
 }
 
 /*# sourceMappingURL=style.css.map */
