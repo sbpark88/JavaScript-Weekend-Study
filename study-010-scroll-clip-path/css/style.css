@@ -33,7 +33,8 @@ section.lower {
 }
 section.upper {
   background: linear-gradient(45deg, cornflowerblue, blueviolet);
-  clip-path: circle(10% at 50% 50%);
+  -webkit-clip-path: polygon(52% 18%, 46% 54%, 66% 41%, 79% 35%, 74% 54%, 68% 71%, 53% 82%, 37% 65%, 34% 33%);
+  clip-path: polygon(52% 18%, 46% 54%, 66% 41%, 79% 35%, 74% 54%, 68% 71%, 53% 82%, 37% 65%, 34% 33%);
   transition: 0.5s;
 }
 section.upper:hover {
@@ -41,7 +42,8 @@ section.upper:hover {
    삼각형 -> 삼각형
    사각형 -> 사각형
    */
-  clip-path: circle(70% at 70% 50%);
+  -webkit-clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+  clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
 }
 
 /*# sourceMappingURL=style.css.map */
