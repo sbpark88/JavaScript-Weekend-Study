@@ -1,35 +1,53 @@
 @import "reset";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
 
-section {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20vw;
-  color: #fff;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(45deg, cornflowerblue, aqua);
 
-  &.lower {
-    background: #333;
-    color: #555;
+  h3 {
+    position: absolute;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); // 자기 자신의 box 크기 만큼 translate
+    color: #222;
+    font-size: 60px;
   }
 
-  &.upper {
-    background: linear-gradient(45deg, cornflowerblue, blueviolet);
-    -webkit-clip-path: polygon(52% 18%, 46% 54%, 66% 41%, 79% 35%, 74% 54%, 68% 71%, 53% 82%, 37% 65%, 34% 33%);
-    clip-path: polygon(52% 18%, 46% 54%, 66% 41%, 79% 35%, 74% 54%, 68% 71%, 53% 82%, 37% 65%, 34% 33%);
-    transition: .5s;
+  .txt {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-size: 13vw;
+    color: transparent;
+    -webkit-text-stroke: 2px #222;
+    text-align: center;
+    width: 100%;
+  }
 
-    &:hover {
-      /* polygon 이 동일한 형태여야한다.
-       삼각형 -> 삼각형
-       사각형 -> 사각형
-       */
-      -webkit-clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
-      clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+  section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .innerText {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      font-size: 13vw;
+      text-align: center;
+      width: 100%;
     }
   }
 }
