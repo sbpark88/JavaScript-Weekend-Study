@@ -19,7 +19,15 @@ section {
 
   &.upper {
     background: linear-gradient(45deg, cornflowerblue, blueviolet);
-    //clip-path: polygon(50% 0%, 100% 0%, 100% 100%);
-    clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 30% 100%);
+    clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 100% 100%);
+    transition: .5s;
+
+    &:hover {
+      /* polygon 이 동일한 형태여야한다.
+       삼각형 -> 삼각형
+       사각형 -> 사각형
+       */
+      clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 30% 100%);
+    }
   }
 }
