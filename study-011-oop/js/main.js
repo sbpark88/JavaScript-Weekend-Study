@@ -1,8 +1,8 @@
-function FontStyle(el, { size, color = 'green'} ) {
+function FontStyle(el, {size, color = 'green'}) {
   this.el = document.querySelector(el)
-  if (size) this.changeSize(size)
-  if (color) this.changeColor(color)
-  this.bindingEvent()
+  this.size = size
+  this.color = color
+  this.setStyleWhenClick()
 }
 
 FontStyle.prototype.changeSize = function (size) {
@@ -19,9 +19,22 @@ Object.defineProperty(FontStyle.prototype, 'changeColor', {
   configurable: true // 속성이 삭제될 수 있도록 설정
 })
 
-Object.defineProperty(FontStyle.prototype, 'bindingEvent', {
+Object.defineProperty(FontStyle.prototype, 'setStyleWhenClick', {
   value: function () {
-    return (() => this.el.addEventListener('click', () => alert(this.el.textContent)))()
+    return (() => {
+      this.el.addEventListener('click', () => {
+        if (this.size) this.changeSize(this.size)
+        if (this.color) this.changeColor(this.color)
+      })
+    })()
+    /*return (() => {
+      console.log(this) // FontStyle {el: p#title1, size: '100px', color: 'aqua'}
+      this.el.addEventListener('click', function () {
+        console.log(this) // 일반 functions 을 사용시 event 안쪽에서 this 에 <p id="title1">HELLO</o> 가 잡힌다.
+        if (this.size) this.changeSize(this.size)
+        if (this.color) this.changeColor(this.color)
+      })
+    })()*/
   },
   enumerable: false,
   writable: false,
