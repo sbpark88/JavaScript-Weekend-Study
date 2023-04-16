@@ -21,12 +21,12 @@ Object.defineProperty(FontStyle.prototype, 'changeColor', {
 
 Object.defineProperty(FontStyle.prototype, 'setStyleWhenClick', {
   value: function () {
-    return (() => {
+    /*return (() => {
       this.el.addEventListener('click', () => {
         if (this.size) this.changeSize(this.size)
         if (this.color) this.changeColor(this.color)
       })
-    })()
+    })()*/
     /*return (() => {
       console.log(this) // FontStyle {el: p#title1, size: '100px', color: 'aqua'}
       this.el.addEventListener('click', function () {
@@ -35,6 +35,13 @@ Object.defineProperty(FontStyle.prototype, 'setStyleWhenClick', {
         if (this.color) this.changeColor(this.color)
       })
     })()*/
+    return (() => {
+      this.el.addEventListener('click', function () {
+        console.log(this) // 일반 functions 을 사용시 event 안쪽에서 this 에 <p id="title1">HELLO</o> 가 잡힌다.
+        if (this.size) this.changeSize(this.size)
+        if (this.color) this.changeColor(this.color)
+      }.bind(this)) // ES5 이하 Traditional Function 의 this 가 event 안쪽에서 변하는 문제를 `bind`를 이용해 해결.
+    })()
   },
   enumerable: false,
   writable: false,
