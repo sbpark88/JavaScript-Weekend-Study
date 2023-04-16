@@ -2,6 +2,7 @@ function FontStyle(el, { size, color = 'green'} ) {
   this.el = document.querySelector(el)
   if (size) this.changeSize(size)
   if (color) this.changeColor(color)
+  this.bindingEvent()
 }
 
 FontStyle.prototype.changeSize = function (size) {
@@ -17,6 +18,16 @@ Object.defineProperty(FontStyle.prototype, 'changeColor', {
   writable: true, // 속성 값이 변경 가능하도록 설정
   configurable: true // 속성이 삭제될 수 있도록 설정
 })
+
+Object.defineProperty(FontStyle.prototype, 'bindingEvent', {
+  value: function () {
+    return (() => this.el.addEventListener('click', () => alert(this.el.textContent)))()
+  },
+  enumerable: false,
+  writable: false,
+  configurable: false
+})
+
 
 new FontStyle('#title1', {size: '100px', color: 'aqua'})
 new FontStyle('#title2', {size: '50px'})
