@@ -1,1 +1,15 @@
 @import "reset";
+
+button {
+  padding: 10px 20px;
+  margin: 30px;
+  background: darkgoldenrod;
+  border-radius: 10px;
+  border: none;
+}
+
+div#box {
+  width: 100px;
+  height: 100px;
+  background: aqua;
+}
