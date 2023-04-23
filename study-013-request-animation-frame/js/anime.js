@@ -2,22 +2,24 @@ import {$, eventBind, clickEventBind} from "./domUtil.js";
 
 const btn = document.querySelector('button');
 const box = document.querySelector('#box');
-clickEventBind('button')(() => requestAnimationFrame(moveSquare))
 
-const move = target => ({value, seconds}) => {
+const moveSquare = anime('#box', {prop: 'margin-left', value: 500, seconds: 2})
+clickEventBind('button')(() => moveSquare())
+
+function anime(selector, options = {prop: '', value: 0, seconds: 0}) {
+  const target = $(selector)
+  if (!target || !options.prop) return
   let start = null
-  const milliseconds = seconds * 1000
-  return (timestamp) => {
+  const milliseconds = options.seconds * 1000
+  const run = (timestamp = null) => {
     if (!start) start = timestamp
     let progress = timestamp - start
     if (progress < milliseconds) {
-      target.style.marginLeft = `${value * progress / milliseconds}px`
-      requestAnimationFrame(moveSquare)
-    } else {  // 주어진 정수값에 딱 떨어지도록 하기 위해... 이렇게 안 해주면 500 입력시 499.98 이런식으로 멈춘다.
-      target.style.marginLeft = `${value}px`
+      target.style[options.prop] = `${options.value * progress / milliseconds}px`
+      requestAnimationFrame(run)
+    } else {
+      target.style[options.prop] = `${options.value}px`
     }
   }
+  return run
 }
-
-const moveSquare = move(box)({value: 500, seconds: 2})
-
