@@ -1,4 +1,4 @@
-import {$, renderInnerHTML} from './Render.js'
+import {$, renderBeforeEnd, renderInnerHTML, renderWithTemplate} from './Render.js'
 import {clickEventBind} from "./EventBinding.js";
 import {apiKey} from "../../private/youtube-api.js";
 
@@ -8,6 +8,7 @@ const num = 10
 /* Ref: https://developers.google.com/youtube/v3/docs/?hl=ko#PlaylistItems */
 const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&maxResults=${num}&playlistId=${list}`
 const main = $('main')
+const body = $('body')
 
 // MARK: Data
 
@@ -41,15 +42,28 @@ const videoComponent = item => {
               <span>${snippet.publishedAt.slice(0, 10)}</span>
             </div>
           </article>
-          `
+         `
 }
 
+const createPopupDOM = () => {
+  return `
+          <aside>
+            <div class="content"></div>
+            <span class="close">close</span>
+          </aside>
+         `
+}
+
+const createPopup = () => renderBeforeEnd(body)(createPopupDOM())
+
 // MARK: Event Binding
-clickEventBind('main')(event => {
+const popupOpenEvent = clickEventBind('main')(event => {
   event.preventDefault()
   if (!(event.target.parentNode.nodeName === 'A')) return
   const videoId = event.target.closest('a').getAttribute('href')
-  console.log(videoId)
+  createPopup()
+  clickEventBind('aside')(event => {
+    if (event.target.classList.contains('close')) event.currentTarget.remove()
+  })
 })
-
 

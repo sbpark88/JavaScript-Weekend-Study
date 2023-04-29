@@ -59,3 +59,21 @@ main {
     }
   }
 }
+
+aside {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, .9);
+  top: 0;
+  left: 0;
+  padding: 5vw;
+
+  .close {
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+}
