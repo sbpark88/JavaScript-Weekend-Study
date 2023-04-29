@@ -10,9 +10,12 @@ const main = $('main')
 
 // MARK: Data
 
-fetch(url)
-    .then(response => response.json())
-    .then(data => renderVideoList(data))
+const getYoutubeList = async () => {
+  const response = await fetch(url)
+  const data = await response.json()
+  renderVideoList(data)
+}
+const _ = getYoutubeList()
 
 // MARK: Render
 
