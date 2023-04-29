@@ -1,1 +1,61 @@
 @import "reset";
+
+main {
+  width: 100%;
+  height: 100vh;
+  padding: 10vh 10vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  article {
+    width: 48%;
+    height: 30%;
+    display: flex;
+    border: 1px solid #999;
+    padding: 10px;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 50px;
+
+    .picture {
+      display: block;
+      width: 40%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.5);
+      }
+    }
+
+    .content {
+      width: 54%;
+      height: 100%;
+      position: relative;
+
+      h3 {
+        font: bold 16px/1.2 'aritla';
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      p {
+        font: 12px/1.2 'arial';
+        color: #888
+      }
+
+      span {
+        font: 12px/1 'arial';
+        color: orange;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+  }
+}
