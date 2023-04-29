@@ -1,4 +1,5 @@
-import {$, eventBind, clickEventBind} from './domUtil.js'
+import {$, renderInnerHTML} from './Render.js'
+import {clickEventBind} from "./EventBinding.js";
 import {apiKey} from "../../private/youtube-api.js";
 
 const key = apiKey
@@ -13,33 +14,34 @@ const main = $('main')
 const getYoutubeList = async () => {
   const response = await fetch(url)
   const data = await response.json()
-  renderVideoList(data)
+  const template = createMainDOM(data)
+  renderInnerHTML(main)(template)
 }
+
 const _ = getYoutubeList()
 
 // MARK: Render
 
-const renderVideoList = data => {
-  let tags = ''
-  data.items.forEach(item => {
-    const snippet = item.snippet
-    const title = snippet.title.length > 50 ? snippet.title : snippet.title.slice(0, 50) + "..."
-    const description = snippet.description > 100 ? snippet.description : snippet.description.slice(0, 100) + "..."
-    tags +=
-        `
-            <article>
-              <a class="picture" href="${snippet.resourceId.videoId}">
-                <img src="${snippet.thumbnails.standard.url}" alt=${title}>
-              </a>
-              <div class="content">
-                <h3>Title:  ${title}</h3>
-                <p>${description}</p>
-                <span>${snippet.publishedAt.slice(0, 10)}</span>
-              </div>
-            </article>
-            `
-  })
-  main.innerHTML = tags
+const createMainDOM = data => {
+  return data.items.reduce((acc, curr) => acc += videoComponent(curr), '')
+}
+
+const videoComponent = item => {
+  const snippet = item.snippet
+  const title = snippet.title.length > 50 ? snippet.title : snippet.title.slice(0, 50) + "..."
+  const description = snippet.description > 100 ? snippet.description : snippet.description.slice(0, 100) + "..."
+  return `
+          <article>
+            <a class="picture" href="${snippet.resourceId.videoId}">
+              <img src="${snippet.thumbnails.standard.url}" alt=${title}>
+            </a>
+            <div class="content">
+              <h3>Title:  ${title}</h3>
+              <p>${description}</p>
+              <span>${snippet.publishedAt.slice(0, 10)}</span>
+            </div>
+          </article>
+          `
 }
 
 // MARK: Event Binding
