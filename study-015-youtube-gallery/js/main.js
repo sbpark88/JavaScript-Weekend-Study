@@ -1,12 +1,22 @@
 import {$, renderBeforeEnd, renderInnerHTML, renderWithTemplate} from './Render.js'
 import {clickEventBind} from "./EventBinding.js";
-import {apiKey} from "../../private/youtube-api.js";
 
-const key = apiKey
+const apiKey = await (async () => {
+  try {
+    return (await import('../../private/youtube-api.js')).apiKey;
+  } catch (error) {
+    if (error instanceof TypeError) {
+      return prompt('API Key 를 입력하세요')
+    } else {
+      alert('알 수 없는 에러')
+    }
+  }
+})()
+
 const list = 'PLRROPbx6xj0H9H4jmTmQ1RS1LoJkG5Jfe'
 const num = 10
 /* Ref: https://developers.google.com/youtube/v3/docs/?hl=ko#PlaylistItems */
-const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&maxResults=${num}&playlistId=${list}`
+const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${apiKey}&maxResults=${num}&playlistId=${list}`
 const main = $('main')
 const body = $('body')
 
