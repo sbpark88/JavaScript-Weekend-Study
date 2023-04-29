@@ -45,23 +45,26 @@ const videoComponent = item => {
          `
 }
 
-const createPopupDOM = () => {
+const createPopupDOM = videoId => {
   return `
           <aside>
-            <div class="content"></div>
+            <div class="content">
+              <iframe src="https://www.youtube.com/embed/${videoId}" width="100%" height="100%"></iframe>
+            </div>
             <span class="close">close</span>
           </aside>
          `
 }
 
-const createPopup = () => renderBeforeEnd(body)(createPopupDOM())
+const createPopup = videoId => renderBeforeEnd(body)(createPopupDOM(videoId))
 
 // MARK: Event Binding
+
 const popupOpenEvent = clickEventBind('main')(event => {
   event.preventDefault()
   if (!(event.target.parentNode.nodeName === 'A')) return
   const videoId = event.target.closest('a').getAttribute('href')
-  createPopup()
+  createPopup(videoId)
   clickEventBind('aside')(event => {
     if (event.target.classList.contains('close')) event.currentTarget.remove()
   })
