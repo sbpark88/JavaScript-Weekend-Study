@@ -62,7 +62,7 @@ export default class Youtube {
             <div class="content">
               <h3>Title:  ${title}</h3>
               <p>${description}</p>
-              <span>${snippet.publishedAt.slice(0, 10)}</span>
+              <p>${snippet.publishedAt.slice(0, 10)}</p>
             </div>
           </article>
          `
