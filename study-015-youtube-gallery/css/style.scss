@@ -68,6 +68,12 @@ aside {
   top: 0;
   left: 0;
   padding: 5vw;
+  opacity: 0;
+  transition: opacity 1s;
+
+  &.on {
+    opacity: 1;
+  }
 
   .content {
     width: 100%;

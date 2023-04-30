@@ -1,4 +1,4 @@
-import {$, renderBeforeEnd, renderInnerHTML, renderWithTemplate} from './Render.js'
+import {$, renderBeforeEnd, renderInnerHTML} from './Render.js'
 import {clickEventBind} from "./EventBinding.js";
 
 const apiKey = await (async () => {
@@ -76,10 +76,16 @@ const popupOpenEvent = clickEventBind('main')(event => {
   const videoId = event.target.closest('a').getAttribute('href')
   createPopup(videoId)
   document.body.style.overflow = 'hidden'
+  // COMMENT: on 이 없는 상태로 DOM 이 생성되고, 이후 on 이 추가되도록 비동기로 동작해야한다.
+  //          현재 이 Closure context 가 Synchronous 일 뿐 아니라 아래 classList.toggle 역시 Synchronous Function 이다.
+  //          따라서 이를 비동기 처리 하려면 Closure 를 async 로 바꾸고, 아래 로직을 강제로 Promise 반환하도록 해 비동기 처리를 해야한다.
+  //          이런 경우 가장 간단히 처리할 수 있는 방법이 아래와 같이 강제로 setTimeout 을 이용해 callback queue 로 내보내
+  //          escaping closures 로 동작시키는 것이다.
+  setTimeout(() => $('aside').classList.toggle('on', true), 0)
   clickEventBind('aside')(event => {
     if (!event.target.classList.contains('close')) return
     event.currentTarget.remove()
     document.body.style.overflow = 'auto'
+    setTimeout(() => $('aside').classList.toggle('on', false), 0)
   })
 })
-
