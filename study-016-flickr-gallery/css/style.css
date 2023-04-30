@@ -1,3 +1,5 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +14,45 @@ li {
 
 a {
   text-decoration: none;
+}
+
+body {
+  background-color: #eee;
+}
+
+#wrap {
+  width: 100%;
+  padding: 50px;
+  overflow: hidden;
+}
+#wrap #list {
+  /* float 을 부모 태그에 가두기 위해 부모에서 float 을 clear 해주는 상용구
+  https://sbpark88.github.io/css/2023/03/01/basic-css-part1.html#h-1-float--clear 참고
+  */
+}
+#wrap #list::after {
+  content: "";
+  display: block;
+  clear: both; /* clear 가 float 보다 위에 와야하나? 아래가 아니고? */
+}
+#wrap #list li {
+  width: 20%;
+  float: left;
+  padding: 10px;
+}
+#wrap #list li > div {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+}
+#wrap #list li > div img {
+  width: 100%;
+}
+#wrap #list li > div p {
+  font: 18px/1.2 "Architects Daughter";
+  color: #777;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

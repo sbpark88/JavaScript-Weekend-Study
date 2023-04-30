@@ -1,1 +1,42 @@
 @import "reset";
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+#wrap {
+  width: 100%;
+  padding: 50px;
+  overflow: hidden;
+
+  #list {
+    /* float 을 부모 태그에 가두기 위해 부모에서 float 을 clear 해주는 상용구
+    https://sbpark88.github.io/css/2023/03/01/basic-css-part1.html#h-1-float--clear 참고
+    */
+    &::after {
+      content: '';
+      display: block;
+      clear: both; /* clear 가 float 보다 위에 와야하나? 아래가 아니고? */
+    }
+
+    li {
+      width: calc(100% / 5);
+      float: left;
+      padding: 10px;
+
+      > div {
+        width: 100%;
+        background-color: #fff;
+        padding: 20px;
+
+        img {
+          width: 100%;
+        }
+
+        p {
+          font: 18px/1.2 'Architects Daughter';
+          color: #777;
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
