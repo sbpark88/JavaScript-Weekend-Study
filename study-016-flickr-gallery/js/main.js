@@ -40,7 +40,7 @@ const getFlickrList = async () => {
   const data = await response.json()
   const template = createMainDOM(data)
   renderInnerHTML(imageMain)(template)
-  await isoLayout()
+  await isoLayout(imageMain)
 }
 
 const _ = getFlickrList()
@@ -66,7 +66,7 @@ const imageComponent = item => {
           `
 }
 
-const isoLayout = async () => {
+const isoLayout = async el => {
   const imgArray = [...document.getElementsByTagName('img')]
   let promiseArray = []
 
@@ -81,6 +81,7 @@ const isoLayout = async () => {
   try {
     await Promise.all(promiseArray)
     sort()
+    el.classList.toggle('on', true)
   } catch (error) {
     console.error('isoLayout error', error)
   }

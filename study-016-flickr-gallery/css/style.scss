@@ -7,6 +7,15 @@
   overflow: hidden;
 
   #list {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: 1s;
+
+    &.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* float 을 부모 태그에 가두기 위해 부모에서 float 을 clear 해주는 상용구
     https://sbpark88.github.io/css/2023/03/01/basic-css-part1.html#h-1-float--clear 참고
     */
