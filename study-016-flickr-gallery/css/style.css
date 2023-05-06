@@ -44,6 +44,8 @@ body {
   width: 100%;
   background-color: #fff;
   padding: 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
 }
 #wrap #list li > div img {
   width: 100%;
