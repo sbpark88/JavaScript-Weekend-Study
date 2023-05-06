@@ -40,9 +40,8 @@ const getFlickrList = async () => {
   const data = await response.json()
   const template = createMainDOM(data)
   renderInnerHTML(imageMain)(template)
-  isoLayout()
+  await isoLayout()
 }
-
 
 const _ = getFlickrList()
 
@@ -67,13 +66,33 @@ const imageComponent = item => {
           `
 }
 
-const isoLayout = () => {
-  // https://isotope.metafizzy.co/options.html
-  // 첫 번째 파라미터: 배치될 요소들의 부모 선택자
-  // 두 번째 파라미터: 설정값을 정의한 객체
-  new Isotope('#list', {
-    itemSelector: '.item',      // 배치가 될 자식의 클래스 명
-    columnWidth: '.item',       // 배치가 될 자식의 넓이값
-    transitionDuration: '.5s'   // UI 배치 모션 시간
+const isoLayout = async () => {
+  const imgArray = [...document.getElementsByTagName('img')]
+  let promiseArray = []
+
+  imgArray.forEach(img => {
+    const promise = new Promise((resolve, reject) => {
+      img.addEventListener('load', resolve)
+      img.addEventListener('error', reject)
+    })
+    promiseArray.push(promise)
   })
+
+  try {
+    await Promise.all(promiseArray)
+    sort()
+  } catch (error) {
+    console.error('isoLayout error', error)
+  }
+
+  function sort() {
+    // https://isotope.metafizzy.co/options.html
+    // 첫 번째 파라미터: 배치될 요소들의 부모 선택자
+    // 두 번째 파라미터: 설정값을 정의한 객체
+    new Isotope('#list', {
+      itemSelector: '.item',      // 배치가 될 자식의 클래스 명
+      columnWidth: '.item',       // 배치가 될 자식의 넓이값
+      transitionDuration: '.5s'   // UI 배치 모션 시간
+    })
+  }
 }
