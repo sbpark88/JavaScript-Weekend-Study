@@ -1,9 +1,9 @@
 import {$} from "./Render.js";
+import {curry} from "./FP.js";
 
-const eventBind = el => eventType => listener => $(el).addEventListener(eventType, listener)
-const clickEventBind = el => listener => $(el).addEventListener('click', listener)
+const _eventBind = (el, eventType, listener) => $(el).addEventListener(eventType, listener)
+const eventBind = curry(_eventBind)
 
 export {
-  eventBind,
-  clickEventBind,
+  eventBind
 }
