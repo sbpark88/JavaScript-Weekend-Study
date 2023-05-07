@@ -6,7 +6,7 @@ const BASE_URL = 'https://www.flickr.com/services/rest'
 const OPTIONS = {
   api_key: '',
   method: 'flickr.interestingness.getList',
-  per_page: '200',
+  per_page: '50',
   format: 'json',
   nojsoncallback: 1
 }
@@ -32,6 +32,7 @@ const objToUrlParams = obj => {
 
 const url = `${BASE_URL}?${objToUrlParams(OPTIONS)}`
 const imageMain = $('#list')
+const loading = $('.loading')
 
 // MARK: Data
 
@@ -40,7 +41,7 @@ const getFlickrList = async () => {
   const data = await response.json()
   const template = createMainDOM(data)
   renderInnerHTML(imageMain)(template)
-  await isoLayout(imageMain)
+  await isoLayout(loading, imageMain)
 }
 
 const _ = getFlickrList()
@@ -66,14 +67,18 @@ const imageComponent = item => {
           `
 }
 
-const isoLayout = async el => {
+const isoLayout = async (loadingBar, el) => {
   const imgArray = [...document.getElementsByTagName('img')]
   let promiseArray = []
 
   imgArray.forEach(img => {
     const promise = new Promise((resolve, reject) => {
-      img.addEventListener('load', resolve)
-      img.addEventListener('error', reject)
+      if (img.complete) {
+        resolve()
+      } else {
+        img.addEventListener('load', resolve)
+        img.addEventListener('error', reject)
+      }
     })
     promiseArray.push(promise)
   })
@@ -81,6 +86,7 @@ const isoLayout = async el => {
   try {
     await Promise.all(promiseArray)
     sort()
+    loadingBar.classList.toggle('on', false)
     el.classList.toggle('on', true)
   } catch (error) {
     console.error('isoLayout error', error)
