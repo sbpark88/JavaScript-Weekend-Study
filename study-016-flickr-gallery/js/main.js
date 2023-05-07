@@ -33,7 +33,6 @@ const objToUrlParams = obj => {
 
 const url = `${BASE_URL}?${objToUrlParams(OPTIONS)}`
 const searchText = $('#search')
-const searchButton = $('#btnSearch')
 const loading = $('.loading')
 const imageMain = $('#list')
 
@@ -119,16 +118,17 @@ const isoLayout = async (loadingBar, el) => {
 
 // MARK: Event Binding
 
+// 검색 버튼
 const searchComponent = (loadingBar, imageSection, options, restApiUrl, inputBox) => event => {
   event.preventDefault()
+  const searchText = inputBox.value.trim()
+  if (!searchText) return alert('검색어를 입력하세요')
+
   loadingBar.classList.toggle('on', true)
   imageSection.classList.toggle('on', false)
 
   let NEW_OPTIONS = {...options}
   NEW_OPTIONS.method = 'flickr.photos.search'
-
-  const searchText = inputBox.value.trim()
-  if (!searchText) return alert('검색어를 입력하세요')
   const url = `${BASE_URL}?${objToUrlParams(NEW_OPTIONS)}&tags=${searchText}`
   return getFlickrList(url)
 }
@@ -141,3 +141,13 @@ eventBind('#search', 'keyup', event => {
   if (event.keyCode !== 13) return
   search(event)
 })
+
+// Interest(기본값) 이미지 조회
+const interestComponent = (loadingBar, imageSection) => event => {
+  event.preventDefault()
+  loadingBar.classList.toggle('on', true)
+  imageSection.classList.toggle('on', false)
+  const _ = getFlickrList(url)
+}
+const interest = interestComponent(loading, imageMain)
+eventBind('#btnInterest', 'click', interest)
