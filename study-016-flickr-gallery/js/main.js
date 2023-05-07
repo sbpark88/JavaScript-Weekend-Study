@@ -6,7 +6,7 @@ const BASE_URL = 'https://www.flickr.com/services/rest'
 const OPTIONS = {
   api_key: '',
   method: 'flickr.interestingness.getList',
-  per_page: '50',
+  per_page: '200',
   format: 'json',
   nojsoncallback: 1
 }
@@ -55,29 +55,39 @@ const imageComponent = item => {
   // https://www.flickr.com/services/api/misc.urls.html
   const imgSrc = `https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_m.jpg`
   const imgSrcBig = `https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`
+  // https://www.flickr.com/services/api/misc.buddyicons.html
+  const imgBuddy = `http://farm${item.farm}.staticflickr.com/${item.server}/buddyicons/${item.owner}.jpg`
   return `
           <li class="item">
             <div>
               <a href="${imgSrcBig}">
-                <img src="${imgSrc}" />
+                <img src="${imgSrc}" alt="thumbnail" class="pic" />
               </a>
               <p>${item.title}</p>
+              <article class="profile">
+                <img src="${imgBuddy}" alt="owner profile icon">
+                <span>${item.owner}</span>              
+              </article>
             </div>
           </li>
           `
 }
 
 const isoLayout = async (loadingBar, el) => {
-  const imgArray = [...document.getElementsByTagName('img')]
+  const imgArray = $('img')
   let promiseArray = []
 
+  const imgDefaultBuddy = `https://www.flickr.com/images/buddyicon.gif`
   imgArray.forEach(img => {
     const promise = new Promise((resolve, reject) => {
       if (img.complete) {
         resolve()
       } else {
         img.addEventListener('load', resolve)
-        img.addEventListener('error', reject)
+        img.addEventListener('error', () => {
+          img.src = imgDefaultBuddy
+          reject()
+        })
       }
     })
     promiseArray.push(promise)
@@ -85,12 +95,12 @@ const isoLayout = async (loadingBar, el) => {
 
   try {
     await Promise.all(promiseArray)
-    sort()
-    loadingBar.classList.toggle('on', false)
-    el.classList.toggle('on', true)
   } catch (error) {
-    console.error('isoLayout error', error)
+    console.error('Cannot load some images', error)
   }
+  sort()
+  loadingBar.classList.toggle('on', false)
+  el.classList.toggle('on', true)
 
   function sort() {
     // https://isotope.metafizzy.co/options.html
