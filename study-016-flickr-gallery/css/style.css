@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fredericka+the+Great&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -30,6 +30,33 @@ body {
 }
 .loading.on {
   opacity: 1;
+}
+
+h1 {
+  padding: 80px 50px 0;
+  font: normal 100px/1.2 "Fredericka the great";
+}
+
+#searchBox {
+  padding: 50px 60px 0;
+  font-size: 0; /* 검색어 창과 우측 버튼을 붙이기 위함 */
+}
+#searchBox input[type=text] {
+  width: 300px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding-left: 10px;
+}
+#searchBox #btnSearch {
+  width: 80px;
+  height: 29px;
+  background-color: #333;
+  border: none;
+  color: #fff;
+  font: bold 12px "arial";
+  text-align: center;
+  cursor: pointer;
 }
 
 #wrap {

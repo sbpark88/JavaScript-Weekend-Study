@@ -1,12 +1,13 @@
 /* DOC: https://www.flickr.com/services/api/ */
 
 import {$, renderInnerHTML} from "./Render.js";
+import {eventBind} from "./EventBinding.js";
 
 const BASE_URL = 'https://www.flickr.com/services/rest'
 const OPTIONS = {
   api_key: '',
   method: 'flickr.interestingness.getList',
-  per_page: '200',
+  per_page: '50',
   format: 'json',
   nojsoncallback: 1
 }
@@ -31,12 +32,14 @@ const objToUrlParams = obj => {
 }
 
 const url = `${BASE_URL}?${objToUrlParams(OPTIONS)}`
-const imageMain = $('#list')
+const searchText = $('#search')
+const searchButton = $('#btnSearch')
 const loading = $('.loading')
+const imageMain = $('#list')
 
 // MARK: Data
 
-const getFlickrList = async () => {
+const getFlickrList = async url => {
   const response = await fetch(url)
   const data = await response.json()
   const template = createMainDOM(data)
@@ -44,7 +47,7 @@ const getFlickrList = async () => {
   await isoLayout(loading, imageMain)
 }
 
-const _ = getFlickrList()
+const _ = getFlickrList(url)
 
 // MARK: Render
 const createMainDOM = data => {
@@ -86,7 +89,7 @@ const isoLayout = async (loadingBar, el) => {
         img.addEventListener('load', resolve)
         img.addEventListener('error', () => {
           img.src = imgDefaultBuddy
-          reject()
+          resolve()
         })
       }
     })
@@ -96,7 +99,7 @@ const isoLayout = async (loadingBar, el) => {
   try {
     await Promise.all(promiseArray)
   } catch (error) {
-    console.error('Cannot load some images', error)
+    console.error(error)
   }
   sort()
   loadingBar.classList.toggle('on', false)
@@ -113,3 +116,28 @@ const isoLayout = async (loadingBar, el) => {
     })
   }
 }
+
+// MARK: Event Binding
+
+const searchComponent = (loadingBar, imageSection, options, restApiUrl, inputBox) => event => {
+  event.preventDefault()
+  loadingBar.classList.toggle('on', true)
+  imageSection.classList.toggle('on', false)
+
+  let NEW_OPTIONS = {...options}
+  NEW_OPTIONS.method = 'flickr.photos.search'
+
+  const searchText = inputBox.value.trim()
+  if (!searchText) return alert('검색어를 입력하세요')
+  const url = `${BASE_URL}?${objToUrlParams(NEW_OPTIONS)}&tags=${searchText}`
+  return getFlickrList(url)
+}
+const search = searchComponent(loading, imageMain, OPTIONS, url, searchText)
+
+
+eventBind('#btnSearch', 'click', search)
+eventBind('#search', 'keyup', event => {
+  event.preventDefault()
+  if (event.keyCode !== 13) return
+  search(event)
+})
