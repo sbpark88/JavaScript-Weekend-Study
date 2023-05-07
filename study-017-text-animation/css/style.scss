@@ -1,1 +1,62 @@
 @import "reset";
+
+main {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 10vh 10vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+
+  &.bg1 {
+    background: linear-gradient(45deg, aqua, lightgreen);
+  }
+  &.bg2 {
+    background: linear-gradient(45deg, hotpink, violet);
+  }
+
+  ul {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+
+    li {
+      width: 400px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative; /* 자식이 absolute 를 갖기 때문에 그 자식에게 부모의 position 을 제공하기 위해 사용 */
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        border: 1px solid #fff;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transition: .5s;
+      }
+      a {
+        font: bold 16px/1 'arial';
+        color: #fff;
+      }
+
+      &.on {
+        &::before {
+          top: 0;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+
+
+
+}
