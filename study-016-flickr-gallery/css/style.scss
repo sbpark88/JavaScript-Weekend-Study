@@ -59,6 +59,21 @@
           color: #777;
           margin-top: 10px;
           margin-bottom: 20px;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+}
+
+$images: ("300px": 1, "600px": 2, "900px": 3, "1200px": 4);
+
+@each $screenWidth, $imageCount in $images {
+  @media screen and (min-width: $screenWidth) {
+    #wrap {
+      #list {
+        li {
+          width: calc(100% / $imageCount);
         }
       }
     }

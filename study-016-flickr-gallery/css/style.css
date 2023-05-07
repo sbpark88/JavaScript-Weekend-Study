@@ -74,6 +74,28 @@ body {
   color: #777;
   margin-top: 10px;
   margin-bottom: 20px;
+  word-break: break-all;
+}
+
+@media screen and (min-width: 300px) {
+  #wrap #list li {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 600px) {
+  #wrap #list li {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 900px) {
+  #wrap #list li {
+    width: 33.3333333333%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #wrap #list li {
+    width: 25%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
