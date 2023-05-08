@@ -41,6 +41,12 @@ const imageMain = $('#list')
 const getFlickrList = async url => {
   const response = await fetch(url)
   const data = await response.json()
+  if (data.photos.total === 0) {
+    alert('검색 결과가 없습니다')
+    loadingBarStatus(false)
+    clearSearchText()
+    return
+  }
   const template = createMainDOM(data)
   renderInnerHTML(imageMain)(template)
   await isoLayout(loading, imageMain)
