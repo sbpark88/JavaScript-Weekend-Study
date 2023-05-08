@@ -48,6 +48,44 @@ const getFlickrList = async url => {
 
 const _ = getFlickrList(url)
 
+// 검색 키워드를 이용한 데이터 요청
+const searchComponent = (loadingBar, imageSection, options, restApiUrl, inputBox) => event => {
+  event.preventDefault()
+  const searchText = inputBox.value.trim()
+  if (!searchText) return alert('검색어를 입력하세요')
+  loadingBarStatus(true)
+  let NEW_OPTIONS = {...options}
+  NEW_OPTIONS.method = 'flickr.photos.search'
+  const url = `${BASE_URL}?${objToUrlParams(NEW_OPTIONS)}&tags=${searchText}`
+  return getFlickrList(url)
+}
+const search = searchComponent(loading, imageMain, OPTIONS, url, searchText)
+
+// Interest(기본값)으로 이미지 조회
+const interestComponent = (loadingBar, imageSection) => event => {
+  event.preventDefault()
+  loadingBarStatus(true)
+  clearSearchText()
+  return getFlickrList(url)
+}
+const interest = interestComponent(loading, imageMain)
+
+// 특정 유저의 정보 조회
+const userPhotosComponent = (loadingBar, imageSection, options) => async event => {
+  event.preventDefault()
+  if (event.target.className !== 'userId') return
+  loadingBarStatus(true)
+  // https://www.flickr.com/services/api/flickr.people.getPhotos.html
+  let NEW_OPTIONS = {...options}
+  NEW_OPTIONS.method = 'flickr.people.getPhotos'
+  NEW_OPTIONS.user_id = event.target.textContent
+  const url = `${BASE_URL}?${objToUrlParams(NEW_OPTIONS)}`
+  clearSearchText()
+  return getFlickrList(url)
+}
+
+const userPhotos = userPhotosComponent(loading, imageMain, OPTIONS)
+
 // MARK: Render
 const createMainDOM = data => {
   return data.photos.photo.reduce((acc, curr) => acc += imageComponent(curr), '')
@@ -68,7 +106,7 @@ const imageComponent = item => {
               <p>${item.title}</p>
               <article class="profile">
                 <img src="${imgBuddy}" alt="owner profile icon">
-                <span>${item.owner}</span>              
+                <span class="userId">${item.owner}</span>              
               </article>
             </div>
           </li>
@@ -101,8 +139,7 @@ const isoLayout = async (loadingBar, el) => {
     console.error(error)
   }
   sort()
-  loadingBar.classList.toggle('on', false)
-  el.classList.toggle('on', true)
+  loadingBarStatus(false)
 
   function sort() {
     // https://isotope.metafizzy.co/options.html
@@ -116,24 +153,15 @@ const isoLayout = async (loadingBar, el) => {
   }
 }
 
-// MARK: Event Binding
-
-// 검색 버튼
-const searchComponent = (loadingBar, imageSection, options, restApiUrl, inputBox) => event => {
-  event.preventDefault()
-  const searchText = inputBox.value.trim()
-  if (!searchText) return alert('검색어를 입력하세요')
-
-  loadingBar.classList.toggle('on', true)
-  imageSection.classList.toggle('on', false)
-
-  let NEW_OPTIONS = {...options}
-  NEW_OPTIONS.method = 'flickr.photos.search'
-  const url = `${BASE_URL}?${objToUrlParams(NEW_OPTIONS)}&tags=${searchText}`
-  return getFlickrList(url)
+const loadingBarComponent = (loadingBar, imageSection) => show => {
+  loadingBar.classList.toggle('on', show)
+  imageSection.classList.toggle('on', !show)
 }
-const search = searchComponent(loading, imageMain, OPTIONS, url, searchText)
+const loadingBarStatus = loadingBarComponent(loading, imageMain)
 
+const clearSearchText = () => ($('#search').value = '')
+
+// MARK: Event Binding
 
 eventBind('#btnSearch', 'click', search)
 eventBind('#search', 'keyup', event => {
@@ -142,12 +170,10 @@ eventBind('#search', 'keyup', event => {
   search(event)
 })
 
-// Interest(기본값) 이미지 조회
-const interestComponent = (loadingBar, imageSection) => event => {
-  event.preventDefault()
-  loadingBar.classList.toggle('on', true)
-  imageSection.classList.toggle('on', false)
-  const _ = getFlickrList(url)
-}
-const interest = interestComponent(loading, imageMain)
 eventBind('#btnInterest', 'click', interest)
+
+eventBind('main', 'click', event => {
+  event.preventDefault()
+  if (event.target.className !== 'userId') return
+  const _ = userPhotos(event)
+})

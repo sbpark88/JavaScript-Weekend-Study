@@ -1,5 +1,5 @@
 @import "reset";
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fredericka+the+Great&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Fredericka+the+Great&family=Gamja+Flower&display=swap');
 
 .loading {
   position: absolute;
@@ -93,11 +93,28 @@ h1 {
         }
 
         p {
-          font: 18px/1.2 'Architects Daughter';
+          font: 18px/1.2 'Architects Daughter', 'Gamja Flower';
           color: #777;
           margin-top: 10px;
           margin-bottom: 20px;
           word-break: break-all;
+        }
+
+        .profile {
+          display: flex;
+          gap: 10px;
+          align-items: end;
+          img {
+            width: 40px;
+          }
+          .userId {
+            cursor: pointer;
+            color: orange;
+            font-size: 15px;
+            &:hover {
+              color: aqua;
+            }
+          }
         }
       }
     }
