@@ -4,6 +4,7 @@ import {Flickr, FlickrMethodType} from "./Flickr.js";
 import {imageTemplate} from "./FlickrComponents.js";
 import {isoLayout} from "./Isotope.js";
 
+const MY_PHOTO_STREAM_ID = '186014471@N03'
 const searchText = $('#search')
 const loading = $('.loading')
 const imageMain = $('#list')
@@ -15,7 +16,7 @@ const flickr = new Flickr(await (async () => {
     return (await import('../../private/flickr.js')).apiKey;
   } catch (error) {
     if (error instanceof TypeError) {
-      return prompt('API Key 를 입력하세요')
+      return prompt('API Key 를 입력하세요.')
     } else {
       alert('알 수 없는 에러')
     }
@@ -37,8 +38,6 @@ const data = await flickr.fetchFlickr({
   method: FlickrMethodType.Interest,
 })
 
-const _ = await requestFlickr()
-
 async function requestFlickr({method, perPage, searchText, userId} = {}) {
   loadingBarStatus(true)
   try {
@@ -58,17 +57,18 @@ async function requestFlickr({method, perPage, searchText, userId} = {}) {
 // MARK: Methods
 const imageSearchByKeywordComponent = inputText => () => {
   const searchText = inputText.value.trim()
-  if (!searchText) return alert('검색어를 입력하세요')
+  if (!searchText) return alert('검색어를 입력하세요.')
   return requestFlickr({
     method: FlickrMethodType.Search,
     searchText: searchText
   })
 }
-const imageSearchByUserComponent = event => {
-  if (event.target.className !== 'userId') return
+
+const imageSearchByUserComponent = userId => {
+  if (!userId) return alert('사용자 아이디가 누락되었습니다.')
   return requestFlickr({
     method: FlickrMethodType.User,
-    userId: event.target.textContent
+    userId: userId
   })
 }
 
@@ -81,6 +81,7 @@ const getInterestImages = requestFlickr
 
 // MARK: Event Binding
 
+// 1. Search
 eventBind('#btnSearch', 'click', getImagesBySearch)
 eventBind('#search', 'keyup', event => {
   event.preventDefault()
@@ -88,10 +89,21 @@ eventBind('#search', 'keyup', event => {
   const _ = getImagesBySearch()
 })
 
+// 2. Interest
 eventBind('#btnInterest', 'click', getInterestImages)
 
+// 3. User
 eventBind('main', 'click', event => {
   event.preventDefault()
   if (event.target.className !== 'userId') return
-  const _ = getImagesByUser(event)
+  const _ = getImagesByUser(event.target.textContent)
 })
+
+eventBind('#btnMine', 'click', () => getImagesByUser(MY_PHOTO_STREAM_ID))
+
+// MARK: Initial Page
+// COMMENT: module 방식에 defer 라서 window.onload 나 window.addEventListener 가 안 먹힌다.
+//         `load` 이벤트는 DOM Rendering 을 위해 기다리는 이벤트인데 이미 다 그렸기 때문에
+//         굳이 이 JavaScript 파일을 끝까지 기다릴 필요가 없어졌기 때문.
+
+const _ = getImagesByUser(MY_PHOTO_STREAM_ID)
