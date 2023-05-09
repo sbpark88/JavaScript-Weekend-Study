@@ -1,6 +1,6 @@
-const createDOM = data => data.photos.photo.reduce((acc, curr) => acc += imageTemplate(curr), '')
+const imageTemplate = data => data.photos.photo.reduce((acc, curr) => acc += oneImageTemplate(curr), '')
 
-const imageTemplate = item => {
+const oneImageTemplate = item => {
   // https://www.flickr.com/services/api/misc.urls.html
   const imgSrc = `https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_m.jpg`
   const imgSrcBig = `https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`
@@ -23,4 +23,5 @@ const imageTemplate = item => {
 }
 
 export {
+  imageTemplate
 }
