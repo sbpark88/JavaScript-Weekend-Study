@@ -1,5 +1,5 @@
 import {$, renderInnerHTML} from "./Render.js";
-import {clickEventBind} from "./EventBinding.js";
+import {eventBind} from "./EventBinding.js";
 
 const buttonWrapper = $('ul')
 const buttons = $('li')
