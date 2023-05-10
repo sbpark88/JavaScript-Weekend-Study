@@ -129,6 +129,38 @@ h1 {
   color: aqua;
 }
 
+aside {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  padding: 5vw;
+  opacity: 0;
+  transition: opacity 1s;
+}
+aside.on {
+  opacity: 1;
+}
+aside .pic {
+  width: 100%;
+  height: 100%;
+}
+aside .pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+aside .close {
+  font: bold 12px/1 "Arial";
+  color: #fff;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 300px) {
   #wrap #list li {
     width: 100%;

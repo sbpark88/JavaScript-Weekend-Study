@@ -22,6 +22,18 @@ const oneImageTemplate = item => {
           `
 }
 
+const popupForLargeImageTemplate = url => {
+  return `
+          <aside>
+            <div class="pic">
+              <img src="${url}" alt="large image">
+            </div>
+            <span class="close">Close</span>
+          </aside>
+          `
+}
+
 export {
-  imageTemplate
+  imageTemplate,
+  popupForLargeImageTemplate
 }

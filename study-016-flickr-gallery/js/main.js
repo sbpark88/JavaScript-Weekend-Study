@@ -1,10 +1,12 @@
-import {$, renderInnerHTML} from "./Render.js";
+import {$, renderBeforeEnd, renderInnerHTML} from "./Render.js";
 import {eventBind} from "./EventBinding.js";
 import {Flickr, FlickrMethodType} from "./Flickr.js";
-import {imageTemplate} from "./FlickrComponents.js";
+import {imageTemplate, popupForLargeImageTemplate} from "./FlickrComponents.js";
 import {isoLayout} from "./Isotope.js";
+import {escapingClosure} from "../../study-015-youtube-gallery/js/CommonUtils.js";
 
 const MY_PHOTO_STREAM_ID = '186014471@N03'
+const body = $('body')
 const searchText = $('#search')
 const loading = $('.loading')
 const imageMain = $('#list')
@@ -95,9 +97,23 @@ eventBind('#btnInterest', 'click', getInterestImages)
 // 3. User
 eventBind('main', 'click', event => {
   event.preventDefault()
-  if (event.target.className !== 'userId') return
-  const _ = getImagesByUser(event.target.textContent)
+  const targetClass = event.target.className
+  if (targetClass !== 'userId' && targetClass !== 'pic') return
+  if (targetClass === 'userId') getImagesByUser(event.target.textContent)
+  if (targetClass === 'pic') popupForLargeImage(event.target.parentElement.getAttribute('href'))
 })
+
+const popupForLargeImage = url => {
+  renderBeforeEnd(body)(popupForLargeImageTemplate(url))
+  const aside = $('aside')
+  document.body.style.overflow = 'hidden'
+  escapingClosure(() => aside.classList.toggle('on', true))
+  eventBind('aside > span.close', 'click', () => {
+    aside.classList.toggle('on', false)
+    document.body.style.overflow = 'auto'
+    escapingClosure(() => aside.remove(), 1)
+  })
+}
 
 eventBind('#btnMine', 'click', () => getImagesByUser(MY_PHOTO_STREAM_ID))
 
