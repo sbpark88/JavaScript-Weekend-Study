@@ -38,11 +38,12 @@ main.bg2 {
 }
 main ul {
   display: flex;
-  gap: 50px;
+  gap: 10vw;
   align-items: center;
+  top: 15vh;
 }
 main ul li {
-  width: 400px;
+  width: 35vw;
   height: 50px;
   display: flex;
   justify-content: center;
@@ -61,12 +62,44 @@ main ul li::before {
   transition: 0.5s;
 }
 main ul li a {
+  /* 디자인 상 업어도 무관하나 click event 발생 시 `li` 아 아닌 `a` 가 click 되도록 하기 위함 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* 디자인 상 업어도 무관하나 click event 발생 시 `li` 아 아닌 `a` 가 click 되도록 하기 위함 */
   font: bold 16px/1 "arial";
   color: #fff;
+  text-indent: 200px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transition: 0.5s;
+}
+main ul li a::before {
+  content: "";
+  display: block;
+  width: 150px;
+  height: 100%;
+  background: #fff;
+  transform: skewX(40deg);
+  position: absolute;
+  top: 0;
+  left: -200px;
+  opacity: 0.5;
+  transition: 0.5s 0.3s; /* property duration delay */
 }
 main ul li.on::before {
   top: 0;
   height: 100%;
+}
+main ul li.on a {
+  text-indent: 0;
+  opacity: 1;
+}
+main ul li.on a::before {
+  left: 120%;
 }
 
 /*# sourceMappingURL=style.css.map */
