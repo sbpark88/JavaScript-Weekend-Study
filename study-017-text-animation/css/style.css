@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -69,7 +70,7 @@ main ul li a {
   width: 100%;
   height: 100%;
   /* 디자인 상 업어도 무관하나 click event 발생 시 `li` 아 아닌 `a` 가 click 되도록 하기 위함 */
-  font: bold 16px/1 "arial";
+  font: bold 16px/1 "Arial", sans-serif;
   color: #fff;
   text-indent: 200px;
   overflow: hidden;
@@ -100,6 +101,20 @@ main ul li.on a {
 }
 main ul li.on a::before {
   left: 120%;
+}
+main article {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+main article h1 {
+  font: normal 15vw/1 "Anton", sans-serif;
+  color: #fff;
+}
+main article.on {
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */
