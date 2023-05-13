@@ -1,5 +1,5 @@
 @import "reset";
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inconsolata:wght@300&display=swap');
 
 main {
   width: 100%;
@@ -20,14 +20,54 @@ main {
     background: linear-gradient(45deg, hotpink, violet);
   }
 
+  .circle {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+    animation: rotation_clockwise linear 15s infinite;
+
+    p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      span {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 20px;
+        color: #fff;
+        margin-top: -10px;
+        margin-left: -10px;
+        font-family: Inconsolata, serif;
+      }
+    }
+  }
+
+  @keyframes rotation_clockwise {
+    0% {
+      transform:  rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   ul {
     display: flex;
     gap: 10vw;
     align-items: center;
+    position: absolute;
     top: 15vh;
+    padding-right: 30vw;
+    z-index: 1; /* 아래 article 의 span 내 글씨 크기의 scale 이 5가 됨에 따라 해당 영역을 가려버리기 때문에 z-index 를 위로 올려줘야 클릭이 된다. */
 
     li {
-      width: 35vw;
+      width: 25vw;
       height: 50px;
       display: flex;
       justify-content: center;
@@ -105,15 +145,61 @@ main {
     h1 {
       font: normal 15vw/1 'Anton', sans-serif;
       color: #fff;
-      //overflow: hidden;
+      margin-bottom: 40px;
+
       span {
         display: inline-block;
-        transform: translateY(100%);
+        text-shadow: 10px 10px 0 rgba(255, 255, 255, .3);
+        transform: scale(5) rotate(40deg);
+        opacity: 0; /* 바깥쪽 opacity 는 아래 p 태그에 있는 lorem 을 보여주고 가리기 위함이고 여기에도 opacity 가 있어야 자연스러운 모션이 된다. */
+        transition-duration: .5s;
+      }
+    }
+
+    p {
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        position: absolute;
+        left: -100%;
+        transition: 1s .5s;
+      }
+
+      span {
+        font: bold 30px/1 'Arial';
+        color: #fff;
+        opacity: 0;
+        transition: .2s;
+        //transition: .2s .8s;
       }
     }
 
     &.on {
-      display: block;
+      opacity: 1;
+
+      h1 {
+        span {
+          opacity: 1;
+          transform: scale(1) rotate(0);
+        }
+      }
+
+      p {
+        &::before {
+          left: 100%;
+        }
+
+        span {
+          opacity: 1;
+        }
+      }
     }
   }
 }
