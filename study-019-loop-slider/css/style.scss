@@ -108,22 +108,80 @@ main {
   }
 
   .navi {
+    $arrowWidth: 20px;
+    $arrowHeight: 2px;
+    $arrowPadding: 10px;
+    $topCenter: 50%;
+
     position: absolute;
     width: 100%;
     z-index: 4;
     top: calc($boxTop + $boxHeight + 20px);
-    font-size: 50px;
+
+    .prev,
+    .next {
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      border-radius: $topCenter;
+      border: 1px solid #bbb;
+      cursor: pointer;
+
+      &::before,
+      &::after {
+        content: '';
+        width: $arrowWidth;
+        height: $arrowHeight;
+        background-color: #fff;
+        position: absolute;
+        top: $topCenter;
+      }
+
+      &::before {
+        rotate: -45deg;
+      }
+
+      &::after {
+        rotate: 45deg;
+      }
+
+      span {
+        width: $arrowWidth;
+        height: $arrowHeight;
+        background: #fff;
+        position: absolute;
+        top: $topCenter;
+      }
+    }
 
     .prev {
       position: absolute;
       left: 40%;
-      color: #fff;
+
+      &::before,
+      &::after {
+        left: $arrowPadding;
+        transform-origin: left;
+      }
+
+      span {
+        left: $arrowPadding;
+      }
     }
 
     .next {
       position: absolute;
       right: 40%;
-      color: #fff;
+
+      &::before,
+      &::after {
+        right: $arrowPadding;
+        transform-origin: right;
+      }
+
+      span {
+        right: $arrowPadding;
+      }
     }
   }
 }

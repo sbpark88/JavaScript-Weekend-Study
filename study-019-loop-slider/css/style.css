@@ -123,17 +123,63 @@ main .navi {
   width: 100%;
   z-index: 4;
   top: calc(40% + 40vh + 20px);
-  font-size: 50px;
+}
+main .navi .prev,
+main .navi .next {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid #bbb;
+  cursor: pointer;
+}
+main .navi .prev::before, main .navi .prev::after,
+main .navi .next::before,
+main .navi .next::after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+}
+main .navi .prev::before,
+main .navi .next::before {
+  rotate: -45deg;
+}
+main .navi .prev::after,
+main .navi .next::after {
+  rotate: 45deg;
+}
+main .navi .prev span,
+main .navi .next span {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
 }
 main .navi .prev {
   position: absolute;
   left: 40%;
-  color: #fff;
+}
+main .navi .prev::before, main .navi .prev::after {
+  left: 10px;
+  transform-origin: left;
+}
+main .navi .prev span {
+  left: 10px;
 }
 main .navi .next {
   position: absolute;
   right: 40%;
-  color: #fff;
+}
+main .navi .next::before, main .navi .next::after {
+  right: 10px;
+  transform-origin: right;
+}
+main .navi .next span {
+  right: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
