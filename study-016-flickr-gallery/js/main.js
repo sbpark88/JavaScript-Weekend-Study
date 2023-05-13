@@ -3,7 +3,7 @@ import {eventBind} from "./EventBinding.js";
 import {Flickr, FlickrMethodType} from "./Flickr.js";
 import {imageTemplate, popupForLargeImageTemplate} from "./FlickrComponents.js";
 import {isoLayout} from "./Isotope.js";
-import {escapingClosure} from "../../study-015-youtube-gallery/js/CommonUtils.js";
+import {escapingClosure} from "./CommonUtils.js";
 
 const MY_PHOTO_STREAM_ID = '186014471@N03'
 const body = $('body')
