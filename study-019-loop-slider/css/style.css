@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -14,64 +15,46 @@ a {
   text-decoration: none;
 }
 
-section {
+main {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(45deg, hotpink, violet);
-  overflow: hidden;
+  background: #111;
   position: relative;
-  perspective: 600px;
+  overflow: hidden;
 }
-section article {
-  width: 800px;
-  height: 500px;
-  background: #fff;
-  padding: 40px;
+main .list li {
+  width: 15vw;
+  height: 40vh;
+  border: 1px solid aqua;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
-  margin-left: -400px;
-  margin-top: -250px;
+  z-index: 3;
+  padding: 20px;
+}
+main .list li .inner {
+  width: 100%;
+  height: 100%;
+  background: #333;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 30px;
-  transition: 0.5s;
 }
-section article:nth-of-type(1) {
-  transform: translate(-200%, -200%) scale(0.2) rotateY(-120deg);
+main .list li .inner h2 {
+  font: bold 20px/1 "teko";
+  color: #888;
+  letter-spacing: 1px;
 }
-section article:nth-of-type(2) {
-  opacity: 0.4;
-  transform: translate(-100%, -100%) scale(0.7) rotateY(-70deg);
-}
-section article:nth-of-type(3) {
-  opacity: 0.8;
-  transform: translate(0, 0) scale(1) rotateY(0);
-}
-section article:nth-of-type(4) {
-  opacity: 0.4;
-  transform: translate(100%, 100%) scale(0.7) rotateY(70deg);
-}
-section article:nth-of-type(5) {
-  transform: translate(200%, 200%) scale(0.2) rotateY(120deg);
-}
-
-button {
-  position: absolute;
-  top: 50%;
-  margin-top: -10px;
-  font-size: 20px;
-  background: transparent;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-button.prev {
-  left: 10vw;
-}
-button.next {
-  right: 10vw;
+main .list li .inner h2::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 3px;
+  background: #888;
+  margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
