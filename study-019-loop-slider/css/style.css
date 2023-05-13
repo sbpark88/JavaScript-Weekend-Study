@@ -189,6 +189,31 @@ main .navi .prev::before, main .navi .prev::after {
 main .navi .prev span {
   left: 10px;
 }
+main .navi .prev.on span {
+  animation: prevArrow 0.5s 1;
+}
+@keyframes prevArrow {
+  0% {
+    left: 25px;
+    width: 20px;
+    opacity: 1;
+  }
+  70% {
+    left: -30px;
+    width: 50px;
+    opacity: 0;
+  }
+  71% {
+    left: 100px;
+    width: 120px;
+    opacity: 0;
+  }
+  100% {
+    left: 25px;
+    width: 20px;
+    opacity: 1;
+  }
+}
 main .navi .next {
   position: absolute;
   right: 40%;
@@ -199,6 +224,31 @@ main .navi .next::before, main .navi .next::after {
 }
 main .navi .next span {
   right: 10px;
+}
+main .navi .next.on span {
+  animation: nextArrow 0.5s 1;
+}
+@keyframes nextArrow {
+  0% {
+    right: 25px;
+    width: 20px;
+    opacity: 1;
+  }
+  70% {
+    right: -30px;
+    width: 50px;
+    opacity: 0;
+  }
+  71% {
+    right: 100px;
+    width: 120px;
+    opacity: 0;
+  }
+  100% {
+    right: 25px;
+    width: 20px;
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

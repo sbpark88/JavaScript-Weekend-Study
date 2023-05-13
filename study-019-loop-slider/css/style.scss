@@ -188,6 +188,35 @@ main {
       span {
         left: $arrowPadding;
       }
+
+      &.on {
+        span {
+          animation: prevArrow 0.5s 1;
+        }
+
+        @keyframes prevArrow {
+          0% {
+            left: 25px;
+            width: 20px;
+            opacity: 1;
+          }
+          70% {
+            left: -30px;
+            width: 50px;
+            opacity: 0;
+          }
+          71% {
+            left: 100px;
+            width: 120px;
+            opacity: 0;
+          }
+          100% {
+            left: 25px;
+            width: 20px;
+            opacity: 1;
+          }
+        }
+      }
     }
 
     .next {
@@ -202,6 +231,35 @@ main {
 
       span {
         right: $arrowPadding;
+      }
+
+      &.on {
+        span {
+          animation: nextArrow 0.5s 1;
+        }
+
+        @keyframes nextArrow {
+          0% {
+            right: 25px;
+            width: 20px;
+            opacity: 1;
+          }
+          70% {
+            right: -30px;
+            width: 50px;
+            opacity: 0;
+          }
+          71% {
+            right: 100px;
+            width: 120px;
+            opacity: 0;
+          }
+          100% {
+            right: 25px;
+            width: 20px;
+            opacity: 1;
+          }
+        }
       }
     }
   }
