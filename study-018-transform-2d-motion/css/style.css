@@ -39,16 +39,22 @@ section article {
   transition: 0.5s;
 }
 section article:nth-of-type(1) {
-  opacity: 0.5;
-  transform: translate(-100%, -100%) scale(0.4) rotateY(-70deg);
+  transform: translate(-200%, -200%) scale(0.2) rotateY(-120deg);
 }
 section article:nth-of-type(2) {
+  opacity: 0.4;
+  transform: translate(-100%, -100%) scale(0.7) rotateY(-70deg);
+}
+section article:nth-of-type(3) {
   opacity: 0.8;
   transform: translate(0, 0) scale(1) rotateY(0);
 }
-section article:nth-of-type(3) {
-  opacity: 0.5;
-  transform: translate(100%, 100%) scale(0.4) rotateY(70deg);
+section article:nth-of-type(4) {
+  opacity: 0.4;
+  transform: translate(100%, 100%) scale(0.7) rotateY(70deg);
+}
+section article:nth-of-type(5) {
+  transform: translate(200%, 200%) scale(0.2) rotateY(120deg);
 }
 
 button {
