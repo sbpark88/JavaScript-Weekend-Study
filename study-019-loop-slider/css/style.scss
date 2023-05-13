@@ -127,6 +127,27 @@ main {
       border: 1px solid #bbb;
       cursor: pointer;
 
+      &.on {
+        animation: .5s navigation-clicked;
+      }
+
+      @keyframes navigation-clicked {
+        0% {
+          scale: 1;
+          background-color: (0, 0, 0, 0);
+        }
+
+        70% {
+          scale: 1.5;
+          background-color: #666; /* 이상하게 여기에 rgba 는 안 먹힌다. */
+        }
+
+        100% {
+          scale: 1;
+          background-color: (0, 0, 0, 0);
+        }
+      }
+
       &::before,
       &::after {
         content: '';

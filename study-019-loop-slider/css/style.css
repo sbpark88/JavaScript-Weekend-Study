@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
 * {
   margin: 0;
@@ -132,6 +133,24 @@ main .navi .next {
   border-radius: 50%;
   border: 1px solid #bbb;
   cursor: pointer;
+}
+main .navi .prev.on,
+main .navi .next.on {
+  animation: 0.5s navigation-clicked;
+}
+@keyframes navigation-clicked {
+  0% {
+    scale: 1;
+    background-color: 0, 0, 0, 0;
+  }
+  70% {
+    scale: 1.5;
+    background-color: #666; /* 이상하게 여기에 rgba 는 안 먹힌다. */
+  }
+  100% {
+    scale: 1;
+    background-color: 0, 0, 0, 0;
+  }
 }
 main .navi .prev::before, main .navi .prev::after,
 main .navi .next::before,
