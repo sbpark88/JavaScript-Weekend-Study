@@ -16,6 +16,9 @@ export default class Youtube {
 
     // MARK: Initializers
     this.getApiKey().then()
+
+    // MARK: Event Binding
+    this.popupOpenEvent()
   }
 
   get url() {
@@ -106,5 +109,4 @@ export default class Youtube {
       })
     })
   }
-
 }
