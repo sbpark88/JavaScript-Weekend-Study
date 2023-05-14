@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 30px;
+  background: darkgoldenrod;
+  border-radius: 10px;
+  border: none;
+}
+
+div#box {
+  width: 100px;
+  height: 100px;
+  background: aqua;
+}
+
+/*# sourceMappingURL=style.css.map */
