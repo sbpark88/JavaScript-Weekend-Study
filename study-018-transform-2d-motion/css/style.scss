@@ -27,18 +27,22 @@ section {
     &:nth-of-type(1) {
       transform: translate(-200%, -200%) scale(.2) rotateY(-120deg);
     }
+
     &:nth-of-type(2) {
       opacity: .4;
       transform: translate(-100%, -100%) scale(.7) rotateY(-70deg);
     }
+
     &:nth-of-type(3) {
       opacity: .8;
       transform: translate(0, 0) scale(1) rotateY(0);
     }
+
     &:nth-of-type(4) {
       opacity: .4;
       transform: translate(100%, 100%) scale(.7) rotateY(70deg);
     }
+
     &:nth-of-type(5) {
       transform: translate(200%, 200%) scale(.2) rotateY(120deg);
     }

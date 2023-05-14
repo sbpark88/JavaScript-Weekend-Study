@@ -24,3 +24,7 @@ Sass: v1.59.3 compiled with dart2js 2.19.4
 11. [Infinite Scroll(Intersection Observer)](https://sbpark88.github.io/JavaScript-Weekend-Study/study-009-infinite-scroll/)
 12. [Clip Path with Scroll](https://sbpark88.github.io/JavaScript-Weekend-Study/study-010-scroll-clip-path/)
 13. [Youtube Gallery](https://sbpark88.github.io/JavaScript-Weekend-Study/study-015-youtube-gallery/)  (Youtube API Key 필요)
+14. [Flickr Gallery](https://sbpark88.github.io/JavaScript-Weekend-Study/study-016-flickr-gallery/)  (Youtube API Key 필요)
+15. [Text Animation](https://sbpark88.github.io/JavaScript-Weekend-Study/study-017-text-animation/)
+16. [Transform 2D Motion](https://sbpark88.github.io/JavaScript-Weekend-Study/study-018-transform-2d-motion/)
+17. [Loop Slider](https://sbpark88.github.io/JavaScript-Weekend-Study/study-019-loop-slider/)
