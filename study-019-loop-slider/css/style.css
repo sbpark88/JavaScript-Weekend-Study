@@ -1,254 +1,294 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 ul,
 ol,
 li {
-  list-style: none;
-}
+  list-style: none; }
 
 a {
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 main {
   width: 100%;
   height: 100vh;
   background: #111;
   position: relative;
-  overflow: hidden;
-}
-main .list li {
-  width: 15vw;
-  height: 40vh;
-  position: absolute;
-  top: 40%;
-  left: 40%;
-  z-index: 3;
-  padding: 20px;
-  transition: 1s cubic-bezier(0.44, -0.3, 0.42, 0.95);
-}
-main .list li .inner {
-  width: 100%;
-  height: 100%;
-  background: #333;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  transition: 1s;
-}
-main .list li .inner h2 {
-  font: bold 20px/1 "teko";
-  color: #888;
-  letter-spacing: 1px;
-  transition: 0.5s 0.5s;
-}
-main .list li .inner::before {
-  content: "";
-  display: block;
-  width: 20px;
-  height: 3px;
-  background: #888;
-  margin-bottom: 10px;
-  transition: 0.5s;
-}
-main .list li:nth-of-type(1) {
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  opacity: 0;
-  z-index: 1;
-  transform: scale(2);
-}
-main .list li:nth-of-type(2) {
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  z-index: 2;
-  transform: scale(1);
-}
-main .list li:nth-of-type(2) .inner {
-  background: #222;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 5vw;
-}
-main .list li:nth-of-type(2) .inner h2 {
-  color: #fff;
-  font-size: 8vw;
-}
-main .list li:nth-of-type(2) .inner h2::before {
-  background: #fff;
-  height: 6px;
-  width: 6vw;
-  margin-bottom: 20px;
-}
-main .list li:nth-of-type(3) {
-  left: calc(40% + 0vw);
-  transition-delay: 0 s;
-}
-main .list li:nth-of-type(4) {
-  left: calc(40% + 15vw);
-  transition-delay: 0.1 s;
-}
-main .list li:nth-of-type(5) {
-  left: calc(40% + 30vw);
-  transition-delay: 0.2 s;
-}
-main .list li:nth-of-type(6) {
-  left: calc(40% + 45vw);
-  transition-delay: 0.3 s;
-}
-main .list li:nth-of-type(7) {
-  left: calc(40% + 60vw);
-  transition-delay: 0.4 s;
-}
-main .list li:nth-of-type(8) {
-  left: calc(40% + 75vw);
-  transition-delay: 0.5 s;
-}
-main .navi {
-  position: absolute;
-  width: 100%;
-  z-index: 4;
-  top: calc(40% + 40vh + 20px);
-}
-main .navi .prev,
-main .navi .next {
-  display: inline-block;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 1px solid #bbb;
-  cursor: pointer;
-}
-main .navi .prev.on,
-main .navi .next.on {
-  animation: 0.5s navigation-clicked;
-}
+  overflow: hidden; }
+  main .list li {
+    width: 15vw;
+    height: 40vh;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    z-index: 3;
+    padding: 20px;
+    transition: 1s cubic-bezier(0.44, -0.3, 0.42, 0.95); }
+    main .list li .inner {
+      width: 100%;
+      height: 100%;
+      background: #333;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      transition: 1s; }
+      main .list li .inner h2 {
+        font: bold 20px/1 'teko';
+        color: #888;
+        letter-spacing: 1px;
+        transition: .5s .5s; }
+      main .list li .inner::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 3px;
+        background: #888;
+        margin-bottom: 10px;
+        transition: .5s; }
+  main .list li:nth-of-type(1) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    opacity: 0;
+    z-index: 1;
+    transform: scale(2); }
+  main .list li:nth-of-type(2) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    z-index: 2;
+    transform: scale(1); }
+    main .list li:nth-of-type(2) .inner {
+      background-color: #222;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 5vw; }
+      main .list li:nth-of-type(2) .inner h2 {
+        color: #fff;
+        font-size: 8vw; }
+        main .list li:nth-of-type(2) .inner h2::before {
+          background: #fff;
+          height: 6px;
+          width: 6vw;
+          margin-bottom: 20px; }
+  main .list li:nth-of-type(3) {
+    left: calc(40% + 15vw * (3 - 3));
+    transition-delay: 0 s; }
+  main .list li:nth-of-type(4) {
+    left: calc(40% + 15vw * (4 - 3));
+    transition-delay: 0.1 s; }
+  main .list li:nth-of-type(5) {
+    left: calc(40% + 15vw * (5 - 3));
+    transition-delay: 0.2 s; }
+  main .list li:nth-of-type(6) {
+    left: calc(40% + 15vw * (6 - 3));
+    transition-delay: 0.3 s; }
+  main .list li:nth-of-type(7) {
+    left: calc(40% + 15vw * (7 - 3));
+    transition-delay: 0.4 s; }
+  main .list li:nth-of-type(8) {
+    left: calc(40% + 15vw * (8 - 3));
+    transition-delay: 0.5 s; }
+  main .navi {
+    position: absolute;
+    width: 100%;
+    z-index: 4;
+    top: calc(40% + 40vh + 20px); }
+    main .navi .prev,
+    main .navi .next {
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 1px solid #bbb;
+      cursor: pointer; }
+      main .navi .prev.on,
+      main .navi .next.on {
+        animation: .5s navigation-clicked; }
 @keyframes navigation-clicked {
   0% {
     scale: 1;
-    background-color: 0, 0, 0, 0;
-  }
+    background-color: 0, 0, 0, 0; }
   70% {
     scale: 1.5;
-    background-color: #666; /* 이상하게 여기에 rgba 는 안 먹힌다. */
-  }
+    background-color: #666; }
   100% {
     scale: 1;
-    background-color: 0, 0, 0, 0;
-  }
-}
-main .navi .prev::before, main .navi .prev::after,
-main .navi .next::before,
-main .navi .next::after {
-  content: "";
-  width: 20px;
-  height: 2px;
-  background-color: #fff;
-  position: absolute;
-  top: 50%;
-}
-main .navi .prev::before,
-main .navi .next::before {
-  rotate: -45deg;
-}
-main .navi .prev::after,
-main .navi .next::after {
-  rotate: 45deg;
-}
-main .navi .prev span,
-main .navi .next span {
-  width: 20px;
-  height: 2px;
-  background: #fff;
-  position: absolute;
-  top: 50%;
-}
-main .navi .prev {
-  position: absolute;
-  left: 40%;
-}
-main .navi .prev::before, main .navi .prev::after {
-  left: 10px;
-  transform-origin: left;
-}
-main .navi .prev span {
-  left: 10px;
-}
-main .navi .prev.on span {
-  animation: prevArrow 0.5s 1;
-}
+    background-color: 0, 0, 0, 0; } }
+      main .navi .prev::before, main .navi .prev::after,
+      main .navi .next::before,
+      main .navi .next::after {
+        content: '';
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+        position: absolute;
+        top: 50%; }
+      main .navi .prev::before,
+      main .navi .next::before {
+        rotate: -45deg; }
+      main .navi .prev::after,
+      main .navi .next::after {
+        rotate: 45deg; }
+      main .navi .prev span,
+      main .navi .next span {
+        width: 20px;
+        height: 2px;
+        background: #fff;
+        position: absolute;
+        top: 50%; }
+    main .navi .prev {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-140px); }
+      main .navi .prev::before, main .navi .prev::after {
+        left: 10px;
+        transform-origin: left; }
+      main .navi .prev span {
+        left: 10px; }
+      main .navi .prev.on span {
+        animation: prevArrow 0.5s 1; }
 @keyframes prevArrow {
   0% {
     left: 25px;
     width: 20px;
-    opacity: 1;
-  }
+    opacity: 1; }
   70% {
     left: -30px;
     width: 50px;
-    opacity: 0;
-  }
+    opacity: 0; }
   71% {
     left: 100px;
     width: 120px;
-    opacity: 0;
-  }
+    opacity: 0; }
   100% {
     left: 25px;
     width: 20px;
-    opacity: 1;
-  }
-}
-main .navi .next {
-  position: absolute;
-  right: 40%;
-}
-main .navi .next::before, main .navi .next::after {
-  right: 10px;
-  transform-origin: right;
-}
-main .navi .next span {
-  right: 10px;
-}
-main .navi .next.on span {
-  animation: nextArrow 0.5s 1;
-}
+    opacity: 1; } }
+    main .navi .next {
+      position: absolute;
+      right: 50%;
+      transform: translateX(140px); }
+      main .navi .next::before, main .navi .next::after {
+        right: 10px;
+        transform-origin: right; }
+      main .navi .next span {
+        right: 10px; }
+      main .navi .next.on span {
+        animation: nextArrow 0.5s 1; }
 @keyframes nextArrow {
   0% {
     right: 25px;
     width: 20px;
-    opacity: 1;
-  }
+    opacity: 1; }
   70% {
     right: -30px;
     width: 50px;
-    opacity: 0;
-  }
+    opacity: 0; }
   71% {
     right: 100px;
     width: 120px;
-    opacity: 0;
-  }
+    opacity: 0; }
   100% {
     right: 25px;
     width: 20px;
-    opacity: 1;
-  }
-}
+    opacity: 1; } }
+@media screen and (max-width: 979px) {
+  main .list li {
+    width: 12vw;
+    height: 35vh;
+    top: 40%;
+    left: 40%; }
+  main .list li:nth-of-type(3) {
+    left: calc(40% + 12vw * (3 - 3));
+    transition-delay: 0; }
+  main .list li:nth-of-type(4) {
+    left: calc(40% + 12vw * (4 - 3));
+    transition-delay: 0.1; }
+  main .list li:nth-of-type(5) {
+    left: calc(40% + 12vw * (5 - 3));
+    transition-delay: 0.2; }
+  main .list li:nth-of-type(6) {
+    left: calc(40% + 12vw * (6 - 3));
+    transition-delay: 0.3; }
+  main .list li:nth-of-type(7) {
+    left: calc(40% + 12vw * (7 - 3));
+    transition-delay: 0.4; }
+  main .list li:nth-of-type(8) {
+    left: calc(40% + 12vw * (8 - 3));
+    transition-delay: 0.5; }
+  main .navi {
+    top: calc(40% + 35vh + 20px); }
+    main .navi .prev,
+    main .navi .next {
+      width: 60px;
+      height: 60px; }
+      main .navi .prev::before, main .navi .prev::after,
+      main .navi .next::before,
+      main .navi .next::after {
+        width: 18px;
+        height: 2px; }
+      main .navi .prev span,
+      main .navi .next span {
+        width: 18px;
+        height: 2px; } }
+@media screen and (max-width: 539px) {
+  main {
+    background-color: #222; }
+    main .list li {
+      width: 200px;
+      height: 30vh;
+      top: 60vh; }
+    main .list li:nth-of-type(2) {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 60vh;
+      padding: 0;
+      z-index: 2;
+      transform: scale(1); }
+    main .list li:nth-of-type(3) {
+      left: calc(200px * (3 - 3));
+      transition-delay: 0; }
+    main .list li:nth-of-type(4) {
+      left: calc(200px * (4 - 3));
+      transition-delay: 0.1; }
+    main .list li:nth-of-type(5) {
+      left: calc(200px * (5 - 3));
+      transition-delay: 0.2; }
+    main .list li:nth-of-type(6) {
+      left: calc(200px * (6 - 3));
+      transition-delay: 0.3; }
+    main .list li:nth-of-type(7) {
+      left: calc(200px * (7 - 3));
+      transition-delay: 0.4; }
+    main .list li:nth-of-type(8) {
+      left: calc(200px * (8 - 3));
+      transition-delay: 0.5; }
+    main .navi {
+      top: calc(60vh + 30vh + 20px); }
+      main .navi .prev,
+      main .navi .next {
+        width: 50px;
+        height: 50px; }
+        main .navi .prev::before, main .navi .prev::after,
+        main .navi .next::before,
+        main .navi .next::after {
+          width: 14px;
+          height: 2px; }
+        main .navi .prev span,
+        main .navi .next span {
+          width: 14px;
+          height: 2px; } }
 
 /*# sourceMappingURL=style.css.map */
