@@ -284,3 +284,4 @@ Temporary Items
 /.idea/scssLintPlugin.xml
 /.idea/watcherTasks.xml
 /private/
+/**/.sass-cache/
