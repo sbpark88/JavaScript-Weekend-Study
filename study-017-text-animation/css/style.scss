@@ -26,7 +26,6 @@ main {
     position: absolute;
     top: 5vh;
     right: 5vw;
-    animation: rotation_clockwise linear 15s infinite;
 
     p {
       position: absolute;
@@ -44,16 +43,6 @@ main {
         margin-left: -10px;
         font-family: Inconsolata, serif;
       }
-    }
-  }
-
-  @keyframes rotation_clockwise {
-    0% {
-      transform:  rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
     }
   }
 
@@ -177,7 +166,6 @@ main {
         color: #fff;
         opacity: 0;
         transition: .2s;
-        //transition: .2s .8s;
       }
     }
 

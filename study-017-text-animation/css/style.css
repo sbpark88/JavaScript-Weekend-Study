@@ -43,7 +43,6 @@ main .circle {
   position: absolute;
   top: 5vh;
   right: 5vw;
-  animation: rotation_clockwise linear 15s infinite;
 }
 main .circle p {
   position: absolute;
@@ -60,14 +59,6 @@ main .circle p span {
   margin-top: -10px;
   margin-left: -10px;
   font-family: Inconsolata, serif;
-}
-@keyframes rotation_clockwise {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 main ul {
   display: flex;

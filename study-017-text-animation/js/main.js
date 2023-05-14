@@ -1,20 +1,24 @@
 import {$, renderInnerHTML} from "./Render.js";
 import {eventBind} from "./EventBinding.js";
+import {rotateCircularString} from "./CircularStringComponent.js";
 
 const circle = document.querySelector('.circle p');
 
-circle.innerHTML = circle.innerText
-    .split('')
-    .map(
-        (letter, idx) =>
-            `<span style='transform:rotate(${idx * 6}deg) translateY(-150px)'>${letter}</span>`
-    )
-    .join('');
-
-
 
 // MARK: Page Init
-//       article 안쪽 h1 의 문자를 각각 <span> 태그로 감싸주기
+// 시계 방향으로 도는 텍스트 생성하기
+rotateCircularString({
+  data: {
+    selector: '.circle p',
+    degree: 6,
+    translate: 'translateY(-150px)'
+  },
+  keyframes: {
+    seconds: 15
+  }
+})
+
+// article 안쪽 h1 의 문자를 각각 <span> 태그로 감싸주기
 $('article h1').forEach(hTag => {
   const rawText = hTag.textContent
   const template = [...rawText].reduce((acc, character) => acc += wrapSpan(character), '')
