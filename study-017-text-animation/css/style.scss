@@ -1,0 +1,193 @@
+@import "reset";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inconsolata:wght@300&display=swap');
+
+main {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 10vh 10vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+
+  &.bg1 {
+    background: linear-gradient(45deg, aqua, lightgreen);
+  }
+
+  &.bg2 {
+    background: linear-gradient(45deg, hotpink, violet);
+  }
+
+  .circle {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+
+    p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      span {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 20px;
+        color: #fff;
+        margin-top: -10px;
+        margin-left: -10px;
+        font-family: Inconsolata, serif;
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    gap: 10vw;
+    align-items: center;
+    position: absolute;
+    top: 15vh;
+    padding-right: 30vw;
+    z-index: 1; /* 아래 article 의 span 내 글씨 크기의 scale 이 5가 됨에 따라 해당 영역을 가려버리기 때문에 z-index 를 위로 올려줘야 클릭이 된다. */
+
+    li {
+      width: 25vw;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative; /* 자식이 absolute 를 갖기 때문에 그 자식에게 부모의 position 을 제공하기 위해 사용 */
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        border: 1px solid #fff;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transition: .5s;
+      }
+
+      a {
+        /* 디자인 상 업어도 무관하나 click event 발생 시 `li` 아 아닌 `a` 가 click 되도록 하기 위함 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        /* 디자인 상 업어도 무관하나 click event 발생 시 `li` 아 아닌 `a` 가 click 되도록 하기 위함 */
+        font: bold 16px/1 'Arial', sans-serif;
+        color: #fff;
+        text-indent: 200px;
+        overflow: hidden;
+        position: relative;
+        opacity: 0;
+        transition: .5s;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 150px;
+          height: 100%;
+          background: #fff;
+          transform: skewX(40deg);
+          position: absolute;
+          top: 0;
+          left: -200px;
+          opacity: .5;
+          transition: .5s .3s; /* property duration delay */
+        }
+      }
+
+      &.on {
+        &::before {
+          top: 0;
+          height: 100%;
+        }
+
+        a {
+          text-indent: 0;
+          opacity: 1;
+
+          &::before {
+            left: 120%;
+          }
+        }
+      }
+    }
+  }
+
+  article {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+
+    h1 {
+      font: normal 15vw/1 'Anton', sans-serif;
+      color: #fff;
+      margin-bottom: 40px;
+
+      span {
+        display: inline-block;
+        text-shadow: 10px 10px 0 rgba(255, 255, 255, .3);
+        transform: scale(5) rotate(40deg);
+        opacity: 0; /* 바깥쪽 opacity 는 아래 p 태그에 있는 lorem 을 보여주고 가리기 위함이고 여기에도 opacity 가 있어야 자연스러운 모션이 된다. */
+        transition-duration: .5s;
+      }
+    }
+
+    p {
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        position: absolute;
+        left: -100%;
+        transition: 1s .5s;
+      }
+
+      span {
+        font: bold 30px/1 'Arial';
+        color: #fff;
+        opacity: 0;
+        transition: .2s;
+      }
+    }
+
+    &.on {
+      opacity: 1;
+
+      h1 {
+        span {
+          opacity: 1;
+          transform: scale(1) rotate(0);
+        }
+      }
+
+      p {
+        &::before {
+          left: 100%;
+        }
+
+        span {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
