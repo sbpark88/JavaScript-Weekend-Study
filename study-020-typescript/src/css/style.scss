@@ -1,0 +1,385 @@
+@import "reset";
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
+
+$panel-count: 8;
+
+#app {
+  $box-top: 40%;
+  $box-left: 40%;
+  $box-width: 15vw;
+  $box-height: 40vh;
+
+  width: 100%;
+  height: 100vh;
+  background: #111;
+  position: relative;
+  overflow: hidden;
+
+  .list {
+    li {
+      width: $box-width;
+      height: $box-height;
+      position: absolute;
+      top: $box-top;
+      left: $box-left;
+      z-index: 3;
+      padding: 20px;
+      transition: 1s cubic-bezier(.44, -.3, .42, .95);
+
+      .inner {
+        width: 100%;
+        height: 100%;
+        background: #333;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, .5);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        transition: 1s;
+
+        h2 {
+          font: bold 20px/1 'teko';
+          color: #888;
+          letter-spacing: 1px;
+          transition: .5s .5s;
+        }
+
+        &::before {
+          content: '';
+          display: block;
+          width: 20px;
+          height: 3px;
+          background: #888;
+          margin-bottom: 10px;
+          transition: .5s;
+        }
+      }
+    }
+
+    // 순서별 li 위치 및 크기
+    // 1번: 사라진 패널, 2번: 현재 활성화 패널, 3번 ~ : 대기중 패널
+    li:nth-of-type(1) {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      opacity: 0;
+      z-index: 1;
+      transform: scale(2);
+    }
+
+    // 2번은 앞으로 활성화 될 패널
+    li:nth-of-type(2) {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      z-index: 2;
+      transform: scale(1);
+
+      .inner {
+        background-color: #222;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 5vw;
+
+        h2 {
+          color: #fff;
+          font-size: 8vw;
+
+          &::before {
+            background: #fff;
+            height: 6px;
+            width: 6vw;
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+
+    @for $i from 3 through $panel-count {
+      li:nth-of-type(#{$i}) {
+        left: calc(#{$box-left} + #{$box-width} * (#{$i} - 3));
+        transition-delay: (0.1 * ($i - 3)) s;
+      }
+    }
+  }
+
+  .navi {
+    $circle-radius: 70px;
+    $arrow-width: 20px;
+    $arrow-height: 2px;
+    $arrow-padding: 10px;
+    $center: 50%;
+
+    position: absolute;
+    width: 100%;
+    z-index: 4;
+    top: calc(#{$box-top} + #{$box-height} + 20px);
+
+    .prev,
+    .next {
+      display: inline-block;
+      width: $circle-radius;
+      height: $circle-radius;
+      border-radius: 50%;
+      border: 1px solid #bbb;
+      cursor: pointer;
+
+      &.on {
+        animation: .5s navigation-clicked;
+      }
+
+      @keyframes navigation-clicked {
+        0% {
+          scale: 1;
+          background-color: (0, 0, 0, 0);
+        }
+
+        70% {
+          scale: 1.5;
+          background-color: #666; // 이상하게 여기에 rgba 는 안 먹힌다.
+        }
+
+        100% {
+          scale: 1;
+          background-color: (0, 0, 0, 0);
+        }
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        width: $arrow-width;
+        height: $arrow-height;
+        background-color: #fff;
+        position: absolute;
+        top: $center;
+      }
+
+      &::before {
+        rotate: -45deg;
+      }
+
+      &::after {
+        rotate: 45deg;
+      }
+
+      span {
+        width: $arrow-width;
+        height: $arrow-height;
+        background: #fff;
+        position: absolute;
+        top: $center;
+      }
+    }
+
+    .prev {
+      position: absolute;
+      left: $center;
+      transform: translateX(-($circle-radius * 2));
+
+      &::before,
+      &::after {
+        left: $arrow-padding;
+        transform-origin: left;
+      }
+
+      span {
+        left: $arrow-padding;
+      }
+
+      &.on {
+        span {
+          animation: prevArrow 0.5s 1;
+        }
+
+        @keyframes prevArrow {
+          0% {
+            left: 25px;
+            width: 20px;
+            opacity: 1;
+          }
+          70% {
+            left: -30px;
+            width: 50px;
+            opacity: 0;
+          }
+          71% {
+            left: 100px;
+            width: 120px;
+            opacity: 0;
+          }
+          100% {
+            left: 25px;
+            width: 20px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .next {
+      position: absolute;
+      right: $center;
+      transform: translateX($circle-radius * 2);
+
+      &::before,
+      &::after {
+        right: $arrow-padding;
+        transform-origin: right;
+      }
+
+      span {
+        right: $arrow-padding;
+      }
+
+      &.on {
+        span {
+          animation: nextArrow 0.5s 1;
+        }
+
+        @keyframes nextArrow {
+          0% {
+            right: 25px;
+            width: 20px;
+            opacity: 1;
+          }
+          70% {
+            right: -30px;
+            width: 50px;
+            opacity: 0;
+          }
+          71% {
+            right: 100px;
+            width: 120px;
+            opacity: 0;
+          }
+          100% {
+            right: 25px;
+            width: 20px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 979px) {
+  #app {
+    $box-top: 40%;
+    $box-left: 40%;
+    $box-width: 12vw;
+    $box-height: 35vh;
+
+    .list {
+      li {
+        width: $box-width;
+        height: $box-height;
+        top: $box-top;
+        left: $box-left;
+      }
+
+      // 동일한 코드 중복이라 안 써도 될 것 같지만 이 부분을 재정의 해줘야 다시 계산된다.
+      // 어디까지나 SCSS 에서 CSS 로 트랜스파일 되는거고 JavaScript 처럼 매번 실행되는 프로그래밍 언어가 아닌
+      // 정적 문서이므로 다른 크기의 스크린에 대한 크기를 계산해서 미리 다 만들어줘야한다.
+      @for $i from 3 through $panel-count {
+        li:nth-of-type(#{$i}) {
+          left: calc(#{$box-left} + #{$box-width} * (#{$i} - 3));
+          transition-delay: (0.1 * ($i - 3));
+        }
+      }
+    }
+
+    .navi {
+      $circle-radius: 60px;
+      $arrow-width: 18px;
+      $arrow-height: 2px;
+      $arrow-padding: 9px;
+
+      top: calc(#{$box-top} + #{$box-height} + 20px);
+
+      .prev,
+      .next {
+        width: $circle-radius;
+        height: $circle-radius;
+
+        &::before,
+        &::after {
+          width: $arrow-width;
+          height: $arrow-height;
+        }
+
+        span {
+          width: $arrow-width;
+          height: $arrow-height;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 539px) {
+  #app {
+    $box-top: 60vh;
+    $box-width: 200px;
+    $box-height: 30vh;
+
+    background-color: #222;;
+
+    .list {
+      li {
+        width: $box-width;
+        height: $box-height;
+        top: $box-top;
+      }
+
+      li:nth-of-type(2) {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: $box-top;
+        padding: 0;
+        z-index: 2;
+        transform: scale(1);
+      }
+
+      @for $i from 3 through $panel-count {
+        li:nth-of-type(#{$i}) {
+          left: calc(#{$box-width} * (#{$i} - 3));
+          transition-delay: (0.1 * ($i - 3));
+        }
+      }
+    }
+
+    .navi {
+      $circle-radius: 50px;
+      $arrow-width: 14px;
+      $arrow-height: 2px;
+      $arrow-padding: 8px;
+
+      top: calc(#{$box-top} + #{$box-height} + 20px);
+
+      .prev,
+      .next {
+        width: $circle-radius;
+        height: $circle-radius;
+
+        &::before,
+        &::after {
+          width: $arrow-width;
+          height: $arrow-height;
+        }
+
+        span {
+          width: $arrow-width;
+          height: $arrow-height;
+        }
+      }
+    }
+  }
+}
