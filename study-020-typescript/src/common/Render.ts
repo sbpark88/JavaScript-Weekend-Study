@@ -27,12 +27,12 @@ const renderBeforeEnd = (el: Element) => (html: StringOrArray) => insertHtmlBefo
 const renderAfterEnd = (el: Element) => (html: StringOrArray) => insertHtmlAfterEnd(el)(safeHtml(html))
 const renderInnerHTML = (el: Element) => (html: StringOrArray) => el.innerHTML = safeHtml(html)
 
-const renderWithTemplate = (selector: string) => (template: (item: {}) => string) => (jsonData: string[]) => {
+const renderWithTemplate = (selector: string) => (template: <T extends Object>(item: T) => string) => (jsonData: object[]) => {
   const nodeElement: NodeListOf<Element> | Element = $(selector)
   if (!guardElement(nodeElement)) return
   const attachmentTarget: Element = nodeElement as Element
   const renderWithTemplate = renderInnerHTML(attachmentTarget)
-  const createJsonToHtml = (jsonData: string[]): StringOrArray => jsonData.map(item => template(item))
+  const createJsonToHtml = (jsonData: object[]): StringOrArray => jsonData.map(item => template(item))
 
   return pipe(
       createJsonToHtml,
