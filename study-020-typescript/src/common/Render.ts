@@ -23,7 +23,11 @@ const safeHtml = (html: StringOrArray): string => arrayCheck(html) ? htmlArrayRe
 
 const renderBeforeBegin = (el: Element) => (html: StringOrArray) => insertHtmlBeforeBegin(el)(safeHtml(html))
 const renderAfterBegin = (el: Element) => (html: StringOrArray) => insertHtmlAfterBegin(el)(safeHtml(html))
-const renderBeforeEnd = (el: Element) => (html: StringOrArray) => insertHtmlBeforeEnd(el)(safeHtml(html))
+// const renderBeforeEnd = (el: Element) => (html: StringOrArray) => insertHtmlBeforeEnd(el)(safeHtml(html))
+const renderBeforeEnd = (el: Element) => (html: StringOrArray) => {
+  console.log(el)
+  insertHtmlBeforeEnd(el)(safeHtml(html))
+}
 const renderAfterEnd = (el: Element) => (html: StringOrArray) => insertHtmlAfterEnd(el)(safeHtml(html))
 const renderInnerHTML = (el: Element) => (html: StringOrArray) => el.innerHTML = safeHtml(html)
 

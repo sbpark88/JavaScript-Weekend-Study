@@ -1,4 +1,4 @@
-const pannelList: object[] = [
+const panelList: object[] = [
   {
     title: 'CALM VALLEY'
   },
@@ -18,8 +18,16 @@ const pannelList: object[] = [
     title: 'SEA WAVES'
   }]
 
-
+const naviList: object[] = [
+  {
+    direction: 'prev'
+  },
+  {
+    direction: 'next'
+  }
+]
 
 export {
-  pannelList
+  panelList,
+    naviList
 }

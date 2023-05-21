@@ -3,7 +3,7 @@
 
 $panel-count: 8;
 
-main {
+#app {
   $box-top: 40%;
   $box-left: 40%;
   $box-width: 15vw;
@@ -270,7 +270,7 @@ main {
 }
 
 @media screen and (max-width: 979px) {
-  main {
+  #app {
     $box-top: 40%;
     $box-left: 40%;
     $box-width: 12vw;
@@ -324,7 +324,7 @@ main {
 }
 
 @media screen and (max-width: 539px) {
-  main {
+  #app {
     $box-top: 60vh;
     $box-width: 200px;
     $box-height: 30vh;

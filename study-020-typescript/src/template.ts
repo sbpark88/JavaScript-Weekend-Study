@@ -1,5 +1,4 @@
-// const sliderTpl = <T extends {title: string}>(item: T): string => {
-const sliderTpl = <T extends {title: string}>(item: T): string => {
+const sliderTpl = <T extends { title: string }>(item: T): string => {
   return `<li>
             <div class="inner">
               <h2>${item.title}</h2>
@@ -8,6 +7,15 @@ const sliderTpl = <T extends {title: string}>(item: T): string => {
   `
 }
 
+const naviTpl = <T extends { direction: string }>(item: T): string => {
+  return `<p class="${item.direction}">
+            <span></span>
+          </p>
+  `
+}
+
+
 export {
-  sliderTpl
+  sliderTpl,
+  naviTpl
 }
