@@ -1,7 +1,8 @@
 import './css/style.scss';
+import MainView from "./views/mainView";
 
 function App() {
-  return <></>
+  return <MainView/>
 }
 
 export default App;
