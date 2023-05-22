@@ -15,6 +15,20 @@ a {
 body {
   background-color: #eee; }
 
+#mainView aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ddd;
+  z-index: 3; }
+  #mainView aside .close {
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    right: 50px; }
+
 #mainView {
   width: 100%;
   height: 100vh;

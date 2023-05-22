@@ -12,16 +12,16 @@ const MainView = () => {
   }, [])
 
   return (
-      <figure id='mainView'>
-        {
-          Info.map((data, index) =>
-              <Scene key={index}
-                     src={data.src}
-                     tit={data['tit']}
-                     con={data['con']}/>
-          )
-        }
-      </figure>
+        <figure id='mainView'>
+          {
+            Info.map((data, index) =>
+                <Scene key={index}
+                       src={data.src}
+                       tit={data['tit']}
+                       con={data['con']}/>
+            )
+          }
+        </figure>
   );
 };
 
