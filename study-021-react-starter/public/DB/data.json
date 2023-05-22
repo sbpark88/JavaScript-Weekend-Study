@@ -1,0 +1,34 @@
+{
+  "info": [
+    {
+      "src": "pic1.jpg",
+      "tit": "Joe Malone",
+      "bg": "#aaa",
+      "con": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae repellat, facere optio nobis in tempore ea expedita non cupiditate dolore voluptates vero hic et voluptate nihil repudiandae ut aliquam nemo odio maxime ratione tempora consequuntur? Temporibus aspernatur et deleniti rem, nam natus nisi quis neque enim, autem incidunt cupiditate voluptates?"
+    },
+    {
+      "src": "pic2.jpg",
+      "tit": "CHANEL",
+      "bg": "#a79b92",
+      "con": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae repellat, facere optio nobis in tempore ea expedita non cupiditate dolore voluptates vero hic et voluptate nihil repudiandae ut aliquam nemo odio maxime ratione tempora consequuntur? Temporibus aspernatur et deleniti rem, nam natus nisi quis neque enim, autem incidunt cupiditate voluptates?"
+    },
+    {
+      "src": "pic3.jpg",
+      "tit": "Calvin Klein",
+      "bg": "#a0b0be",
+      "con": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae repellat, facere optio nobis in tempore ea expedita non cupiditate dolore voluptates vero hic et voluptate nihil repudiandae ut aliquam nemo odio maxime ratione tempora consequuntur? Temporibus aspernatur et deleniti rem, nam natus nisi quis neque enim, autem incidunt cupiditate voluptates?"
+    },
+    {
+      "src": "pic4.jpg",
+      "tit": "ZARA",
+      "bg": "#929ca4",
+      "con": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae repellat, facere optio nobis in tempore ea expedita non cupiditate dolore voluptates vero hic et voluptate nihil repudiandae ut aliquam nemo odio maxime ratione tempora consequuntur? Temporibus aspernatur et deleniti rem, nam natus nisi quis neque enim, autem incidunt cupiditate voluptates?"
+    },
+    {
+      "src": "pic5.jpg",
+      "tit": "CLOVE",
+      "bg": "#a4a190",
+      "con": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae repellat, facere optio nobis in tempore ea expedita non cupiditate dolore voluptates vero hic et voluptate nihil repudiandae ut aliquam nemo odio maxime ratione tempora consequuntur? Temporibus aspernatur et deleniti rem, nam natus nisi quis neque enim, autem incidunt cupiditate voluptates?"
+    }
+  ]
+}
