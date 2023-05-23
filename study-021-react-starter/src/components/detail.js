@@ -15,19 +15,34 @@ const Detail = forwardRef(({data: {src, tit, bg, con}}, ref) => {
       <AnimatePresence>
         {Open &&
             (<motion.aside
-                initial={{opacity: 0, x: '100%', rotate: 45}}
-                animate={{opacity: 1, x: '0%', rotate: 0, transition: {duration: 1}}}
-                exit={{opacity: 0, x: '100%', rotate: -45, scale: 0, transition: {duration: .8}}}
+                initial={{y: '100%'}}
+                animate={{y: '0', transition: {duration: .6}}}
+                exit={{y: '100%', transition: {duration: .5}}}
             >
-              <div className="txt">
+              <motion.div
+                  className="txt"
+                  initial={{x: '100%', opacity: 0}}
+                  animate={{x: 0, opacity: 1, transition: {duration: .7, delay: .2}}}
+                  exit={{x: '-100%', opacity: 0, transition: {duration: .3}}}
+              >
                 <h2 style={{color: bg}}>{tit}</h2>
                 <p>{con}</p>
-              </div>
-              <div className="pic" style={{backgroundColor: bg}}>
-                <div>
-                  <img src={process.env.PUBLIC_URL + '/img/' + src} alt={tit} />
-                </div>
-              </div>
+              </motion.div>
+              <motion.div
+                  className="pic"
+                  initial={{x: '-300%', width: 0}}
+                  animate={{x: 0, width: '50%', transition: {duration: .5, delay: .4}}}
+                  exit={{y: '-100%', opacity: 0, transition: {duration: .4}}}
+                  style={{backgroundColor: bg}}
+              >
+                <motion.div
+                    initial={{x: '-200%', opacity: 0}}
+                    animate={{x: 0, opacity: 1, transition: {duration: .8, delay: .7}}}
+                    exit={{x: '100%', opacity: 0, transition: {duration: .4}}}
+                >
+                  <img src={process.env.PUBLIC_URL + '/img/' + src} alt={tit}/>
+                </motion.div>
+              </motion.div>
               <motion.span
                   className="close"
                   onClick={() => setOpen(false)}
