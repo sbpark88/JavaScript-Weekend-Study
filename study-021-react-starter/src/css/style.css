@@ -22,7 +22,30 @@ body {
   width: 100%;
   height: 100vh;
   background-color: #ddd;
-  z-index: 3; }
+  z-index: 3;
+  display: flex; }
+  #mainView aside .txt {
+    width: 50%;
+    height: 100vh;
+    padding: 8vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end; }
+    #mainView aside .txt h2 {
+      font: normal 5vw/1 'cinzel decorative';
+      margin-bottom: 50px; }
+    #mainView aside .txt p {
+      font: 14px/1.4 'arial';
+      color: #888; }
+  #mainView aside .pic {
+    padding: 13vw; }
+    #mainView aside .pic > div {
+      width: 100%;
+      height: 100%; }
+      #mainView aside .pic > div img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
   #mainView aside .close {
     cursor: pointer;
     position: absolute;
