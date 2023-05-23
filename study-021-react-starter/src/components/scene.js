@@ -1,7 +1,7 @@
 import {useRef} from "react";
 import Detail from "./detail";
 
-const Scene = (props) => {
+const Scene = ({data: {src, tit, bg, con}}) => {
   const el = useRef(null)
 
   const toggleModal = status => () => el.current.toggleModal(status)
@@ -12,13 +12,13 @@ const Scene = (props) => {
       <>
         <article className='mainView__article' onClick={openModal}>
           <div className="pic">
-            <img src={'img/' + props.src} alt={props['tit']}/>
+            <img src={'img/' + src} alt={tit}/>
           </div>
           <div className="txt">
-            <h2>{props['tit']}</h2>
+            <h2>{tit}</h2>
           </div>
         </article>
-        <Detail ref={el}/>
+        <Detail ref={el} data={{src, tit, bg, con}}/>
       </>
   );
 };

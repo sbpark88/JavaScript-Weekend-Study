@@ -8,20 +8,17 @@ const MainView = () => {
   useEffect(async () => {
     const response = await axios.get(process.env.PUBLIC_URL + '../../DB/data.json')
     setInfo(response.data.info)
-    console.log(response.data.info[0])
   }, [])
 
   return (
-        <figure id='mainView'>
-          {
-            Info.map((data, index) =>
-                <Scene key={index}
-                       src={data.src}
-                       tit={data['tit']}
-                       con={data['con']}/>
-            )
-          }
-        </figure>
+      <figure id='mainView'>
+        {
+          Info.map((data, index) =>
+              <Scene key={index}
+                     data={data}/>
+          )
+        }
+      </figure>
   );
 };
 
