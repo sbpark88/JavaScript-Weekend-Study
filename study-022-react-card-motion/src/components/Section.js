@@ -2,9 +2,14 @@ import Card from "./Card";
 import '../scss/section/_section.scss'
 
 export default function Section() {
+  const style = {
+    top: '140%'
+  }
   return (
-      <section>
-        {titles.map((title, index) => <Card key={index} title={title} />)}
+      <section style={style}>
+        {titles.map((title, index) =>
+            <Card key={title} title={title} count={titles.length} index={index}/>
+        )}
       </section>
   )
 }
