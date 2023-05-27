@@ -1,4 +1,4 @@
-import {pipe} from "./FP.ts"
+import {pipe} from "./FP"
 
 type StringOrArray = string | string[]
 type Position = 'beforebegin' | 'afterbegin' | 'beforeend' | 'afterend'
