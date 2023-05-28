@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.1bf53daf.css",
-    "main.js": "/static/js/main.c392a032.js",
-    "index.html": "/index.html",
-    "main.1bf53daf.css.map": "/static/css/main.1bf53daf.css.map",
-    "main.c392a032.js.map": "/static/js/main.c392a032.js.map"
+    "main.css": "/JavaScript-Weekend-Study/study-022-react-card-motion/static/css/main.1bf53daf.css",
+    "main.js": "/JavaScript-Weekend-Study/study-022-react-card-motion/static/js/main.2457e12e.js",
+    "index.html": "/JavaScript-Weekend-Study/study-022-react-card-motion/index.html",
+    "main.1bf53daf.css.map": "/JavaScript-Weekend-Study/study-022-react-card-motion/static/css/main.1bf53daf.css.map",
+    "main.2457e12e.js.map": "/JavaScript-Weekend-Study/study-022-react-card-motion/static/js/main.2457e12e.js.map"
   },
   "entrypoints": [
     "static/css/main.1bf53daf.css",
-    "static/js/main.c392a032.js"
+    "static/js/main.2457e12e.js"
   ]
 }
