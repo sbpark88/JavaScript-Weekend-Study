@@ -28,5 +28,7 @@ Sass: v1.59.3 compiled with dart2js 2.19.4
 15. [Text Animation](https://sbpark88.github.io/JavaScript-Weekend-Study/study-017-text-animation/)
 16. [Transform 2D Motion](https://sbpark88.github.io/JavaScript-Weekend-Study/study-018-transform-2d-motion/)
 17. [Loop Slider](https://sbpark88.github.io/JavaScript-Weekend-Study/study-019-loop-slider/)
-18. [Framer Motion with React](https://sbpark88.github.io/JavaScript-Weekend-Study/study-021-react-starter/)
-19. [Card Motion with React](https://sbpark88.github.io/JavaScript-Weekend-Study/study-022-react-card-motion/)
+18. [Framer Motion with React](https://github.dev/sbpark88/JavaScript-Weekend-Study/tree/main/study-021-react-starter)
+19. [Card Motion with React](https://github.dev/sbpark88/JavaScript-Weekend-Study/tree/main/study-022-react-card-motion)
+
+with React 는 작은 프로젝트를 별도의 깃 레포지토리에 deploy 하는 것이 부담되서 따로 웹 배포는 하지 않았음.
