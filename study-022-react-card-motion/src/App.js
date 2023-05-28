@@ -16,7 +16,7 @@ function App() {
   return (
       <>
         <Header/>
-        <Section frame={frame} titles={titles}/>
+        <Section frame={frame} titles={titles} cardIndex={cardIndex}/>
         <Buttons frame={frame} count={titles.length}
                  prevClickEvt={() => setCardIndex(cardIndex + 1)}
                  nextClickEvt={() => setCardIndex(cardIndex - 1)}/>

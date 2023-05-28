@@ -16,6 +16,7 @@ section article {
     border-radius: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
     opacity: .5;
+    transition: .5s;
 
     .pic {
       width: 200px;
@@ -33,6 +34,13 @@ section article {
     h2 {
       width: 100%;
       text-align: center;
+    }
+  }
+
+  &.on {
+    > .inner {
+      opacity: 1;
+      transform: scale(1.2);
     }
   }
 
