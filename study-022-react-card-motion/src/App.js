@@ -7,16 +7,26 @@ import {useRef} from "react";
 
 function App() {
   const frame = useRef(null)
-  const cardCount = useRef(0)
 
   return (
       <>
         <Header/>
-        <Section frame={frame} count={cardCount}/>
-        <Buttons frame={frame} count={cardCount}/>
+        <Section frame={frame} titles={titles}/>
+        <Buttons frame={frame} count={titles.length}/>
         <Footer/>
       </>
   );
 }
 
 export default App;
+
+const titles = [
+  'Blizzards',
+  'Calm',
+  'Dusty_Road',
+  'Escape',
+  'Payday',
+  'Retreat',
+  'Seasonal',
+  'Vespers'
+]

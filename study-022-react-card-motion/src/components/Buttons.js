@@ -5,7 +5,7 @@ export default function Buttons({frame, count}) {
   const [throttle, setThrottle] = useState(false)
 
   useEffect(() => {
-    frame.current.style.transform = `rotate(${360 / count.current * cardIndex}deg)`
+    frame.current.style.transform = `rotate(${360 / count * cardIndex}deg)`
   }, [cardIndex])
 
   return (
