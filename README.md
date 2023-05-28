@@ -29,3 +29,4 @@ Sass: v1.59.3 compiled with dart2js 2.19.4
 16. [Transform 2D Motion](https://sbpark88.github.io/JavaScript-Weekend-Study/study-018-transform-2d-motion/)
 17. [Loop Slider](https://sbpark88.github.io/JavaScript-Weekend-Study/study-019-loop-slider/)
 18. [Framer Motion with React](https://sbpark88.github.io/JavaScript-Weekend-Study/study-021-react-starter/)
+19. [Card Motion with React](https://sbpark88.github.io/JavaScript-Weekend-Study/study-022-react-card-motion/)
