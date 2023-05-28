@@ -1,12 +1,7 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
-export default function Buttons({frame, count}) {
-  const [cardIndex, setCardIndex] = useState(0)
+export default function Buttons({prevClickEvt, nextClickEvt}) {
   const [throttle, setThrottle] = useState(false)
-
-  useEffect(() => {
-    frame.current.style.transform = `rotate(${360 / count * cardIndex}deg)`
-  }, [cardIndex])
 
   return (
       <>
@@ -18,13 +13,13 @@ export default function Buttons({frame, count}) {
   function buttonPrevClick() {
     if (throttle) return
     setThrottling()
-    setCardIndex(cardIndex + 1)
+    prevClickEvt()
   }
 
   function buttonNextClick() {
     if (throttle) return
     setThrottling()
-    setCardIndex(cardIndex - 1)
+    nextClickEvt()
   }
 
   function setThrottling() {

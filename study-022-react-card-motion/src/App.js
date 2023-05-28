@@ -3,16 +3,23 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Section from "./components/Section";
 import Buttons from "./components/Buttons";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 
 function App() {
   const frame = useRef(null)
+  const [cardIndex, setCardIndex] = useState(0)
+
+  useEffect(() => {
+    frame.current.style.transform = `rotate(${360 / titles.length * cardIndex}deg)`
+  }, [cardIndex])
 
   return (
       <>
         <Header/>
         <Section frame={frame} titles={titles}/>
-        <Buttons frame={frame} count={titles.length}/>
+        <Buttons frame={frame} count={titles.length}
+                 prevClickEvt={() => setCardIndex(cardIndex + 1)}
+                 nextClickEvt={() => setCardIndex(cardIndex - 1)}/>
         <Footer/>
       </>
   );
