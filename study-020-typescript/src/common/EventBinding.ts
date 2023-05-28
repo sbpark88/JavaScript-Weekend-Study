@@ -1,5 +1,5 @@
-import {$} from "./Render.ts";
-import {curry} from "./FP.ts";
+import {$} from "./Render";
+import {curry} from "./FP";
 
 const _eventBind = (selector: string,
                     eventType: keyof ElementEventMap,
