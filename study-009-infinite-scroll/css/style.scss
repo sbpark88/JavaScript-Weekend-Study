@@ -1,1 +1,39 @@
 @import "reset";
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+section {
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  padding: 50px 20px;
+
+  article {
+    width: 100%;
+    height: 180px;
+    background-color: gray;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, .5);
+    color: #fff;
+
+    $colors: (
+        1: linear-gradient(45deg, fuchsia, plum),
+        2: linear-gradient(45deg, hotpink, plum),
+        3: linear-gradient(45deg, orange, yellow),
+        4: linear-gradient(45deg, lightgreen, cyan),
+        5: linear-gradient(45deg, cornflowerblue, aqua),
+    );
+
+    @each $key, $color in $colors {
+      &.card#{$key} {
+        background: $color;
+      }
+    }
+  }
+}
