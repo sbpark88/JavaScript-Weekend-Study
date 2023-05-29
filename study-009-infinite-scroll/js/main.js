@@ -1,24 +1,39 @@
-const boxes = [...document.getElementsByTagName('div')]
+const cardWrap = document.querySelector('section')
+const cards = document.querySelectorAll('article')
 
-// https://w3c.github.io/IntersectionObserver/#intersection-observer-interface
-const observer = new IntersectionObserver(changes => {
-  changes.forEach(change => {
-    console.log(change.time);               // Timestamp when the change occurred
-    console.log(change.rootBounds);         // Unclipped area of root
-    console.log(change.boundingClientRect); // target.getBoundingClientRect()
-    console.log(change.intersectionRect);   // boundingClientRect, clipped by its containing block ancestors, and intersected with rootBounds
-    console.log(change.intersectionRatio);  // Ratio of intersectionRect area to boundingClientRect area
-    console.log(change.target);             // the Element target
+// MARK: Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    entry.target.classList.toggle('on', entry.isIntersecting)
   })
-}, {threshold: .2})
+}, {
+  threshold: .5
+  // rootMargin: '-140px'
+})
 
-observer.observe(boxes[1])
-observer.observe(boxes[2])
-// Watch for intersection events on a specific target Element.
-// observer.observe(target);
+cards.forEach(card => observer.observe(card))
 
-// Stop watching for intersection events on a specific target Element.
-// observer.unobserve(target);
+function loadCards() {
+  let i = 1
+  do {
+    const card = document.createElement('article')
+    card.classList.add(`card${i}`)
+    card.textContent = 'Box Created'
+    observer.observe(card)
+    cardWrap.append(card)
+    i++
+  } while (i < 9)
+  attachLoadCards()
+}
 
-// Stop observing threshold events on all target elements.
-// observer.disconnect();
+// MARK: Call more card observer (observing last card)
+const lastCardObserver = new IntersectionObserver((entries) => {
+  const lastCard = entries[0]
+  if (lastCard.isIntersecting) {
+    loadCards()
+    lastCardObserver.unobserve(lastCard.target)
+  }
+})
+
+const attachLoadCards = () => lastCardObserver.observe(document.querySelector('article:last-child'))
+attachLoadCards()
