@@ -16,20 +16,26 @@ body {
   overflow-x: hidden; }
 
 section {
-  max-width: 350px;
+  max-width: 550px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 240px;
   align-items: center;
   padding: 50px 20px; }
   section article {
     width: 100%;
-    height: 180px;
+    height: 280px;
     background-color: gray;
     padding: 40px;
     border-radius: 16px;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
-    color: #fff; }
+    color: #fff;
+    opacity: 0.1;
+    transform: translateX(50vw);
+    transition: .5s; }
+    section article.on {
+      opacity: 1;
+      transform: translateX(0); }
     section article.card1 {
       background: linear-gradient(45deg, fuchsia, plum); }
     section article.card2 {
@@ -40,5 +46,11 @@ section {
       background: linear-gradient(45deg, lightgreen, cyan); }
     section article.card5 {
       background: linear-gradient(45deg, cornflowerblue, aqua); }
+    section article.card6 {
+      background: linear-gradient(45deg, brown, lightblue); }
+    section article.card7 {
+      background: linear-gradient(45deg, lightpink, darkred); }
+    section article.card8 {
+      background: linear-gradient(45deg, gray, darkgreen); }
 
 /*# sourceMappingURL=style.css.map */
